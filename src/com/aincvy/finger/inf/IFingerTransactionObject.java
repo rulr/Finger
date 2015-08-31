@@ -1,7 +1,7 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 /**
- * ÊÂÎñFingerObject ½Ó¿Ú<p>
+ * äº‹åŠ¡FingerObject æ¥å£<p>
  * @author World
  * @since JDK 1.7
  * @version alpha 0.0.2
@@ -9,25 +9,25 @@ package com.aincvy.finger.inf;
 public interface IFingerTransactionObject {
 
 	/**
-	 * ¿ªÊ¼ÊÂÎñ
+	 * å¼€å§‹äº‹åŠ¡
 	 * @return
 	 */
 	public int beginTransaction();
 	
 	/**
-	 * Ìá½»ÊÂÎñ ,Ìá½»Ö®ºó»áÊÍ·ÅÕâ¸öÊÂÎñ
+	 * æäº¤äº‹åŠ¡ ,æäº¤ä¹‹åä¼šé‡Šæ”¾è¿™ä¸ªäº‹åŠ¡
 	 * @param tid
 	 */
 	public void commit(int tid);
 	
 	/**
-	 * ÊÂÎñ»Ø¹ö£¬»Ø¹öÖ®ºó»áÊÍ·ÅÕâ¸öÊÂÎñ
+	 * äº‹åŠ¡å›æ»šï¼Œå›æ»šä¹‹åä¼šé‡Šæ”¾è¿™ä¸ªäº‹åŠ¡
 	 * @param tid
 	 */
 	public void rollback(int tid);
 	
 	/**
-	 * ÊÂÎñ²åÈë
+	 * äº‹åŠ¡æ’å…¥
 	 * @param tid
 	 * @param entity
 	 * @return
@@ -35,7 +35,7 @@ public interface IFingerTransactionObject {
 	public int transactionInsert(int tid,IFingerEntity entity);
 	
 	/**
-	 * ÊÂÎñ¸üĞÂ
+	 * äº‹åŠ¡æ›´æ–°
 	 * @param tid
 	 * @param entity
 	 * @return
@@ -43,7 +43,7 @@ public interface IFingerTransactionObject {
 	public int transactionUpdate(int tid,IFingerEntity entity);
 	
 	/**
-	 * ÊÂÎñÉ¾³ı
+	 * äº‹åŠ¡åˆ é™¤
 	 * @param tid
 	 * @param id
 	 * @return

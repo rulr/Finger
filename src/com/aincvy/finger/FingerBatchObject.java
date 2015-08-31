@@ -1,4 +1,4 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ import com.aincvy.finger.inf.IFingerBatchObject;
 import com.aincvy.finger.inf.IFingerEntity;
 
 /**
- * Åú´¦Àí Finger ¶ÔÏó  <p>
+ * æ‰¹å¤„ç† Finger å¯¹è±¡  <p>
  * @author World
  * @version alpha 0.0.2
  * @since JDK 1.7

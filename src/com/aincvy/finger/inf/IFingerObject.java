@@ -1,10 +1,10 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 import java.sql.Connection;
 import java.util.List;
 
 /**
- * Finger ¶ÔÏó½Ó¿Ú
+ * Finger å¯¹è±¡æ¥å£
  * @author World
  * @version alpha 0.0.8
  * @since JDK 1.7
@@ -12,22 +12,22 @@ import java.util.List;
 public interface IFingerObject {
 
 	/**
-	 * ²åÈëÊµÌåÀà£¬Ê¹ÓÃÒ»¸öĞÂµÄÊı¾İ¿âÁ¬½Ó
+	 * æ’å…¥å®ä½“ç±»ï¼Œä½¿ç”¨ä¸€ä¸ªæ–°çš„æ•°æ®åº“è¿æ¥
 	 * @param entity
 	 * @return
 	 */
 	public int insert(IFingerEntity entity);
 	
 	/**
-	 * ²åÈëÊµÌåÀà£¬Ê¹ÓÃÒ»¸öĞÂµÄÊı¾İ¿âÁ¬½Ó
-	 * @param entity ÊµÌå
-	 * @param insertPK ÊÇ·ñ²åÈëÖ÷¼ü
+	 * æ’å…¥å®ä½“ç±»ï¼Œä½¿ç”¨ä¸€ä¸ªæ–°çš„æ•°æ®åº“è¿æ¥
+	 * @param entity å®ä½“
+	 * @param insertPK æ˜¯å¦æ’å…¥ä¸»é”®
 	 * @return
 	 */
 	public int insert(IFingerEntity entity,boolean insertPK);
 	
 	/**
-	 * ²åÈëÊµÌåÀà£¬Ê¹ÓÃ¸ø¶¨µÄÊı¾İ¿âÁ¬½Ó
+	 * æ’å…¥å®ä½“ç±»ï¼Œä½¿ç”¨ç»™å®šçš„æ•°æ®åº“è¿æ¥
 	 * @param con
 	 * @param entity
 	 * @return
@@ -35,16 +35,16 @@ public interface IFingerObject {
 	public int insert(Connection con,IFingerEntity entity);
 	
 	/**
-	 * ²åÈëÊµÌåÀà£¬Ê¹ÓÃ¸ø¶¨µÄÊı¾İ¿âÁ¬½Ó £¬²¢¾ö¶¨ÊÇ·ñ²åÈëÖ÷¼üĞÅÏ¢
+	 * æ’å…¥å®ä½“ç±»ï¼Œä½¿ç”¨ç»™å®šçš„æ•°æ®åº“è¿æ¥ ï¼Œå¹¶å†³å®šæ˜¯å¦æ’å…¥ä¸»é”®ä¿¡æ¯
 	 * @param con
 	 * @param entity
-	 * @param insertPK true:²åÈëÖ÷¼ü£¬ false: ²»²åÈëÖ÷¼ü
+	 * @param insertPK true:æ’å…¥ä¸»é”®ï¼Œ false: ä¸æ’å…¥ä¸»é”®
 	 * @return
 	 */
 	public int insert(Connection con,IFingerEntity entity,boolean insertPK);
 	
 	/**
-	 * ¸üĞÂÊµÌå£¬Ê¹ÓÃĞÂµÄÊı¾İ¿âÁ¬½Ó
+	 * æ›´æ–°å®ä½“ï¼Œä½¿ç”¨æ–°çš„æ•°æ®åº“è¿æ¥
 	 * @param id
 	 * @param entity
 	 * @return
@@ -53,32 +53,32 @@ public interface IFingerObject {
 	
 
 	/**
-	 * ¸üĞÂÊµÌå£¬Ê¹ÓÃ¸ø¶¨µÄÊı¾İ¿âÁ¬½Ó
+	 * æ›´æ–°å®ä½“ï¼Œä½¿ç”¨ç»™å®šçš„æ•°æ®åº“è¿æ¥
 	 * @param con
 	 * @param id
 	 * @param entity
-	 * @param flag Ö´ĞĞ¸üĞÂ²Ù×÷Ö®ºóÊÇ·ñ¹Ø±ÕÁ´½Ó  true:ÊÇ£¬¡¡false:·ñ
+	 * @param flag æ‰§è¡Œæ›´æ–°æ“ä½œä¹‹åæ˜¯å¦å…³é—­é“¾æ¥  true:æ˜¯ï¼Œã€€false:å¦
 	 * @return
 	 */
 	public int update(Connection con,Object id,IFingerEntity entity,boolean flag);
 	
 	
 	/**
-	 * ¸üĞÂÊµÌå
+	 * æ›´æ–°å®ä½“
 	 * @param entity
 	 * @return
 	 */
 	public int update(IFingerEntity entity);
 	
 	/**
-	 * É¾³ıÄ³Ò»Ìõ¼ÇÂ¼
-	 * @param id Ö÷¼üÖµ
+	 * åˆ é™¤æŸä¸€æ¡è®°å½•
+	 * @param id ä¸»é”®å€¼
 	 * @return
 	 */
 	public int delete(Object id);
 	
 	/**
-	 * Ê¹ÓÃ¸ø¶¨µÄÁ¬½Ó½øĞĞÉ¾³ıÄ³ÏîÖµ
+	 * ä½¿ç”¨ç»™å®šçš„è¿æ¥è¿›è¡Œåˆ é™¤æŸé¡¹å€¼
 	 * @param con
 	 * @param id
 	 * @return
@@ -93,7 +93,7 @@ public interface IFingerObject {
 	
 	/**
 	 * 
-	 * @param condition  Ìõ¼ş
+	 * @param condition  æ¡ä»¶
 	 * @return
 	 */
 	public <T> T fetchFirst(String condition);
@@ -106,7 +106,7 @@ public interface IFingerObject {
 	public <T> T fetch(Object id);
 	
 	/**
-	 * »ñÈ¡±íÄÚµÄËùÓĞÊı¾İ
+	 * è·å–è¡¨å†…çš„æ‰€æœ‰æ•°æ®
 	 * @return
 	 */
 	public <T> List<T> fetchTable();
@@ -120,7 +120,7 @@ public interface IFingerObject {
 	
 	
 	/**
-	 * »ñµÃ±íÄÚµÄËùÓĞ¼ÇÂ¼ÌõÊı
+	 * è·å¾—è¡¨å†…çš„æ‰€æœ‰è®°å½•æ¡æ•°
 	 * @return
 	 */
 	public int count();

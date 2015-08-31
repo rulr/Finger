@@ -1,10 +1,10 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * Finger Êı¾İ±í ½Ó¿Ú
+ * Finger æ•°æ®è¡¨ æ¥å£
  * @author World
  * @version alpha 0.0.3
  * @since JDK 1.7
@@ -12,32 +12,32 @@ import java.util.List;
 public interface IFingerDataTable extends List<IFingerDataRow>,Serializable {
 
 	/**
-	 * »ñÈ¡´Ë±íµÄÃû×Ö <br/>
-	 * Èç¹û±¾²éÑ¯½á¹ûÊÇÀûÓÃ¶àÕÅ±í½øĞĞ²éÑ¯µÄ£¬Ôò·µ»ØµÚÒ»ÁĞµÄ±íÃû×Ö
+	 * è·å–æ­¤è¡¨çš„åå­— <br/>
+	 * å¦‚æœæœ¬æŸ¥è¯¢ç»“æœæ˜¯åˆ©ç”¨å¤šå¼ è¡¨è¿›è¡ŒæŸ¥è¯¢çš„ï¼Œåˆ™è¿”å›ç¬¬ä¸€åˆ—çš„è¡¨åå­—
 	 * @return
 	 */
 	public String getTableName();
 	
 	/**
-	 * ÉèÖÃ±¾±íµÄÃû×Ö
+	 * è®¾ç½®æœ¬è¡¨çš„åå­—
 	 * @param name
 	 */
 	public void setTableName(String name);
 	
 	/**
-	 * »ñÈ¡±¾±íµÄÁĞÃû
+	 * è·å–æœ¬è¡¨çš„åˆ—å
 	 * @return
 	 */
 	public List<String> getColumns();
 	
 	/**
-	 * ÉèÖÃ±¾±íµÄÁĞÃû
+	 * è®¾ç½®æœ¬è¡¨çš„åˆ—å
 	 * @param columns
 	 */
 	public void setColumns(List<String> columns);
 	
 	/**
-	 * Ìí¼ÓĞÂÁĞ,Ìí¼Ó³É¹¦·µ»ØÁĞÃû£¬ Ìí¼ÓÊ§°Ü ·µ»Ønull.
+	 * æ·»åŠ æ–°åˆ—,æ·»åŠ æˆåŠŸè¿”å›åˆ—åï¼Œ æ·»åŠ å¤±è´¥ è¿”å›null.
 	 * @param name
 	 * @return
 	 */
@@ -45,21 +45,21 @@ public interface IFingerDataTable extends List<IFingerDataRow>,Serializable {
 	
 
 	/**
-	 * »ñÈ¡±íµÄ ÁĞÊıÁ¿
+	 * è·å–è¡¨çš„ åˆ—æ•°é‡
 	 * @return
 	 */
 	public int getColumnNum();
 
 	
 	/**
-	 * ¸ù¾İË÷Òı»ñÈ¡ÁĞÃû
+	 * æ ¹æ®ç´¢å¼•è·å–åˆ—å
 	 * @param index
 	 * @return
 	 */
 	public String getColumnName(int index);
 	
 	/**
-	 * ¸ù¾İÁĞÃû»ñÈ¡Ë÷Òı
+	 * æ ¹æ®åˆ—åè·å–ç´¢å¼•
 	 * @param name
 	 * @return
 	 */

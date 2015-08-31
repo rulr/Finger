@@ -1,9 +1,9 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 import java.util.List;
 
 /**
- * Finger À©Õ¹Object £¬Ö÷¹¥²éÑ¯²Ù×÷
+ * Finger æ‰©å±•Object ï¼Œä¸»æ”»æŸ¥è¯¢æ“ä½œ
  * @author World
  * @since JDK 1.7
  * @version alpha 0.0.3
@@ -11,30 +11,30 @@ import java.util.List;
 public interface IFingerExpandObject {
 
 	/**
-	 * °ÑSQLÓï¾äµÄ²éÑ¯½á¹û·ÅÈëÒ»¸öIFingerDataTable ÀïÃæ
-	 * @param sql ²éÑ¯Óï¾ä
-	 * @param params ²ÎÊıÁĞ±í
+	 * æŠŠSQLè¯­å¥çš„æŸ¥è¯¢ç»“æœæ”¾å…¥ä¸€ä¸ªIFingerDataTable é‡Œé¢
+	 * @param sql æŸ¥è¯¢è¯­å¥
+	 * @param params å‚æ•°åˆ—è¡¨
 	 * @return
 	 */
 	public IFingerDataTable exQuery(String sql,Object ...params);
 	
 	/**
 	 * 
-	 * @param claxx ÊµÌåÄ£°å
-	 * @param rule °Ñ½á¹û×ª»»³ÉÊµÌåµÄ¹æÔò ,¾ßÌåĞ´·¨Îª: cName => customer , ¼´½á¹û×Ö¶ÎÃû => ÀàÊôĞÔÃû<br/>
-	 *         Èç¹û¹æÔòÃ»ÓĞËµÃ÷µÄÄÚÈİ£¬Ôò Èç¹ûÓĞÀàÊôĞÔÓë½á¹û×Ö¶ÎÃûÏàÍ¬µÄĞÅÏ¢Ôò±»Ğ´ÈëÀàÊµÌå
-	 * @param sql ²éÑ¯Óï¾ä
-	 * @param params ²ÎÊıÁĞ±í
+	 * @param claxx å®ä½“æ¨¡æ¿
+	 * @param rule æŠŠç»“æœè½¬æ¢æˆå®ä½“çš„è§„åˆ™ ,å…·ä½“å†™æ³•ä¸º: cName => customer , å³ç»“æœå­—æ®µå => ç±»å±æ€§å<br/>
+	 *         å¦‚æœè§„åˆ™æ²¡æœ‰è¯´æ˜çš„å†…å®¹ï¼Œåˆ™ å¦‚æœæœ‰ç±»å±æ€§ä¸ç»“æœå­—æ®µåç›¸åŒçš„ä¿¡æ¯åˆ™è¢«å†™å…¥ç±»å®ä½“
+	 * @param sql æŸ¥è¯¢è¯­å¥
+	 * @param params å‚æ•°åˆ—è¡¨
 	 * @return
 	 */
 	public <T> List<T> exQuery(Class<T> claxx, String rule,String sql,Object ...params);
 	
 	/**
-	 * Ö»²åÈë ruleÄÚ±íÊöµÄ×Ö¶Î£¬ ·µ»ØÖµÎª returnBack ËùÖ¸Ê¾µÄÄÚÈİ
-	 * @param rule ¹æÔò±íÊö £¬Èç¹ûÊı¾İ¿â×Ö¶ÎºÍÀàµÄÊôĞÔÃûÒ»ÑùµÄ»°ÔòÓÃ¶ººÅ·Ö¸ôÃ¿¸ö×Ö¶ÎÃû ÀıÈç£º  col1,col2,col3... <br/>
-	 * ²»Ò»ÖÂµÄ»°£¬ÔòÓ¦Ê¹ÓÃ£º  field1 => col1,field2 => col2,field3 => col3 µÄ·½Ê½
-	 * @param entity Òª²åÈëµÄÊµÌåÀà
-	 * @param returnBack  ¾ßÌåÊ¹ÓÃµÄÖµ Çë¿´ FingerBus,Èç¹û¸ø¶¨µÄÖµ²»ÕıÈ·£¬Ôò·µ»ØÊÜÓ°ÏìµÄĞĞÊı
+	 * åªæ’å…¥ ruleå†…è¡¨è¿°çš„å­—æ®µï¼Œ è¿”å›å€¼ä¸º returnBack æ‰€æŒ‡ç¤ºçš„å†…å®¹
+	 * @param rule è§„åˆ™è¡¨è¿° ï¼Œå¦‚æœæ•°æ®åº“å­—æ®µå’Œç±»çš„å±æ€§åä¸€æ ·çš„è¯åˆ™ç”¨é€—å·åˆ†éš”æ¯ä¸ªå­—æ®µå ä¾‹å¦‚ï¼š  col1,col2,col3... <br/>
+	 * ä¸ä¸€è‡´çš„è¯ï¼Œåˆ™åº”ä½¿ç”¨ï¼š  field1 => col1,field2 => col2,field3 => col3 çš„æ–¹å¼
+	 * @param entity è¦æ’å…¥çš„å®ä½“ç±»
+	 * @param returnBack  å…·ä½“ä½¿ç”¨çš„å€¼ è¯·çœ‹ FingerBus,å¦‚æœç»™å®šçš„å€¼ä¸æ­£ç¡®ï¼Œåˆ™è¿”å›å—å½±å“çš„è¡Œæ•°
 	 * @return
 	 */
 	public int exInsert(String rule,IFingerEntity entity,int returnBack);

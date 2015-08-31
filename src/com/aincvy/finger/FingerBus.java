@@ -1,4 +1,4 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import com.aincvy.finger.inf.IFingerEntity;
 import com.aincvy.finger.inf.IFingerObject;
 
 /**
- * Finger ¿ØÖÆ×ÜÏß <p>
+ * Finger æ§åˆ¶æ€»çº¿ <p>
  * @author World
  * @version alpha 0.0.6
  * @since JDK 1.7
@@ -23,13 +23,13 @@ import com.aincvy.finger.inf.IFingerObject;
 public final class FingerBus {
 	
 	static{
-		// ×öÒ»Ğ©×¼±¸
+		// åšä¸€äº›å‡†å¤‡
 		FingerUtils.debug("prepare finger...");
 		try {
 			FingerUtils.debug("load cache...");
-			//¼ÓÔØ»º´æ
+			//åŠ è½½ç¼“å­˜
 			Class.forName("com.aincvy.finger.cache.FingerCache");
-			//¼ÓÔØµ÷ÊÔÀà
+			//åŠ è½½è°ƒè¯•ç±»
 			FingerUtils.debug("load fingerdebug...");
 			Class.forName("com.aincvy.finger.FingerDebug");
 		} catch (ClassNotFoundException e) {
@@ -44,24 +44,24 @@ public final class FingerBus {
 	
 	
 	/**
-	 * µ÷ÊÔÄ£Ê½
+	 * è°ƒè¯•æ¨¡å¼
 	 */
 	public static boolean DEBUG = false;
 	
 	/**
-	 * Ö´ĞĞ¸üĞÂ²Ù×÷Ö®ºó ·µ»ØÊÜÓ°ÏìµÄĞĞÊı£¬  ±¾ÊôĞÔ¿ÉÒÔÔÚFingerExpandObject Àà£¬¼°Æä×ÓÀàÖĞÊ¹ÓÃ
+	 * æ‰§è¡Œæ›´æ–°æ“ä½œä¹‹å è¿”å›å—å½±å“çš„è¡Œæ•°ï¼Œ  æœ¬å±æ€§å¯ä»¥åœ¨FingerExpandObject ç±»ï¼ŒåŠå…¶å­ç±»ä¸­ä½¿ç”¨
 	 */
 	public static int RESULT_RETURN_UPDATE_NUMS = 0x000A;
 	
 	/**
-	 * Ö´ĞĞ²åÈë²Ù×÷Ö®ºó £¬·µ»Ø²åÈëµÄID£¬ ¶ø·ÇÊÜÓ°ÏìµÄĞĞÊı
+	 * æ‰§è¡Œæ’å…¥æ“ä½œä¹‹å ï¼Œè¿”å›æ’å…¥çš„IDï¼Œ è€Œéå—å½±å“çš„è¡Œæ•°
 	 */
 	public static int RESULT_RETURN_INSERT_ID = 0x000B;
 	
 	
 	public static void initParam(BasicDataSource das) {
 		if (_INITED) {
-			throw new FingerRuntimeException("Finger ÒÑ¾­±»³õÊ¼»¯Íê±Ï£¬ÎŞ·¨ÔÙ´Î½øĞĞ³õÊ¼»¯");
+			throw new FingerRuntimeException("Finger å·²ç»è¢«åˆå§‹åŒ–å®Œæ¯•ï¼Œæ— æ³•å†æ¬¡è¿›è¡Œåˆå§‹åŒ–");
 		}
 		_INITED = true;
 		
@@ -70,8 +70,8 @@ public final class FingerBus {
 	}
 	
 	/**
-	 * FingerBus ÊÇ·ñÒÑ¾­³õÊ¼»¯Íê±Ï
-	 * @return true: ÊÇ £¬false: ·ñ
+	 * FingerBus æ˜¯å¦å·²ç»åˆå§‹åŒ–å®Œæ¯•
+	 * @return true: æ˜¯ ï¼Œfalse: å¦
 	 */
 	public static boolean isInited(){
 		return _INITED;
@@ -93,7 +93,7 @@ public final class FingerBus {
 	
 	public static void checkInit() {
 		if (!_INITED) {
-			throw new FingerRuntimeException("FingerĞèÒª³õÊ¼»¯Ö®ºó²ÅÄÜÊ¹ÓÃ");
+			throw new FingerRuntimeException("Fingeréœ€è¦åˆå§‹åŒ–ä¹‹åæ‰èƒ½ä½¿ç”¨");
 		}
 	}
 	
@@ -101,7 +101,7 @@ public final class FingerBus {
 	public static boolean registerObject(Class<? extends IFingerEntity> entityClass,Class<? extends IFingerObject> objectClass ) {
 		checkInit();
 		if (classMap.containsKey(entityClass) || classMap.containsValue(objectClass)) {
-			throw new FingerRuntimeException("ÊµÌåÀà»òÕßDAOÀàÒÑ¾­×¢²á¹ıÁË");
+			throw new FingerRuntimeException("å®ä½“ç±»æˆ–è€…DAOç±»å·²ç»æ³¨å†Œè¿‡äº†");
 		}
 		try {
 			classMap.put(entityClass, objectClass);
@@ -134,12 +134,12 @@ public final class FingerBus {
 		
 		Class<?> daoClass = getDaoClass(claxx);
 		if (daoClass == null) {
-			throw new FingerRuntimeException("¸ÃÊµÌåÀàÎ´×¢²á; ");
+			throw new FingerRuntimeException("è¯¥å®ä½“ç±»æœªæ³¨å†Œ; ");
 		}
 		
 		FingerCacheClass fcs = FingerCache.getCacheClass(daoClass);
 		if (fcs == null) {
-			throw new FingerRuntimeException("Î´ÄÜÔÚ»º´æÖĞÕÒµ½¸ÃÀàĞÍ£¬Çë¼ì²é");
+			throw new FingerRuntimeException("æœªèƒ½åœ¨ç¼“å­˜ä¸­æ‰¾åˆ°è¯¥ç±»å‹ï¼Œè¯·æ£€æŸ¥");
 		}
 		
 		try {
@@ -162,7 +162,7 @@ public final class FingerBus {
 	public static <T> T getDaoObject(Class<?> claxx) {
 		FingerCacheClass fcs = FingerCache.getCacheClass(claxx);
 		if (fcs == null) {
-			throw new FingerRuntimeException("Î´ÄÜÔÚ»º´æÖĞÕÒµ½¸ÃÀàĞÍ£¬Çë¼ì²é");
+			throw new FingerRuntimeException("æœªèƒ½åœ¨ç¼“å­˜ä¸­æ‰¾åˆ°è¯¥ç±»å‹ï¼Œè¯·æ£€æŸ¥");
 		}
 		
 		try {

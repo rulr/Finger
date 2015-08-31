@@ -1,7 +1,7 @@
-package com.aincvy.finger.bridge;
+ï»¿package com.aincvy.finger.bridge;
 
 /**
- * Finger µÄWEB ÇÅ
+ * Finger çš„WEB æ¡¥
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7

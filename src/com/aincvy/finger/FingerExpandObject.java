@@ -1,4 +1,4 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import com.aincvy.finger.inf.IFingerEntity;
 import com.aincvy.finger.inf.IFingerExpandObject;
 
 /**
- * ¿ÉÍØÕ¹ FingerObject
+ * å¯æ‹“å±• FingerObject
  * @author World
  * @version alpha 0.0.2
  * @since JDK 1.7
@@ -83,7 +83,7 @@ public class FingerExpandObject extends FingerBatchObject implements IFingerExpa
 		return 0;
 	}
 
-	// ¹æÔòÊ¹ÓÃ
+	// è§„åˆ™ä½¿ç”¨
 	
 	
 	

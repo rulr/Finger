@@ -1,9 +1,9 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 import java.util.List;
 
 /**
- * Åú´¦ÀíFinger ¶ÔÏó ½Ó¿Ú<p>
+ * æ‰¹å¤„ç†Finger å¯¹è±¡ æ¥å£<p>
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7
@@ -11,42 +11,42 @@ import java.util.List;
 public interface IFingerBatchObject{
 
 	/**
-	 * Åú²åÈë
+	 * æ‰¹æ’å…¥
 	 * @param entities
 	 * @return
 	 */
 	public int batchInsert(List<? extends IFingerEntity> entities);
 	
 	/**
-	 * ÅúÉ¾³ı
+	 * æ‰¹åˆ é™¤
 	 * @param id
 	 * @return
 	 */
 	public int batchDelete(List<Object> ids);
 	
 	/**
-	 * Åú¸üĞÂ
+	 * æ‰¹æ›´æ–°
 	 * @param entities
 	 * @return
 	 */
 	public int batchUpdate(List<? extends IFingerEntity> entities);
 	
 	/**
-	 * Åú²åÈë
+	 * æ‰¹æ’å…¥
 	 * @param entities
 	 * @return
 	 */
 	public int batchInsert(IFingerEntity []entities);
 	
 	/**
-	 * ÅúÉ¾³ı
+	 * æ‰¹åˆ é™¤
 	 * @param entities
 	 * @return
 	 */
 	public int batchDelete(Object []ids);
 	
 	/**
-	 * Åú¸üĞÂ
+	 * æ‰¹æ›´æ–°
 	 * @param entities
 	 * @return
 	 */

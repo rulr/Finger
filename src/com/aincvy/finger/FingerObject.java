@@ -1,4 +1,4 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -17,8 +17,8 @@ import com.aincvy.finger.inf.IFingerEntity;
 import com.aincvy.finger.inf.IFingerObject;
 
 /**
- * Finger¶ÔÏó   <p>
- * Ê¹ÓÃFingerµÄDAO¶ÔÏó¶¼Ó¦¸Ã¼Ì³Ğ×Ô±¾Àà <p>
+ * Fingerå¯¹è±¡   <p>
+ * ä½¿ç”¨Fingerçš„DAOå¯¹è±¡éƒ½åº”è¯¥ç»§æ‰¿è‡ªæœ¬ç±» <p>
  * @author World
  * @version alpha 0.0.7
  * @since JDK 1.7
@@ -26,9 +26,9 @@ import com.aincvy.finger.inf.IFingerObject;
 public abstract class FingerObject implements IFingerObject{
 	
 	protected String table;
-	//ÀàĞÍµÄÊôĞÔÃû
+	//ç±»å‹çš„å±æ€§å
 	protected List<String> fields;
-	//Êı¾İ¿âÀïµÄ×Ö¶ÎÃû
+	//æ•°æ®åº“é‡Œçš„å­—æ®µå
 	protected List<String> dataFields;
 	protected String pk;
 
@@ -37,8 +37,8 @@ public abstract class FingerObject implements IFingerObject{
 		dataFields = new ArrayList<>();
 	}
 	/**
-	 * Èç¹ûÄãµÄÊı¾İ¿â×Ö¶ÎÃûºÍ ÊôĞÔÃû²»Ò»Ñù £¬¿ÉÒÔÊ¹ÓÃ  field => dataField µÄ·½Ê½¸³Öµ
-	 * field ±íÊ¾ÀàµÄÊôĞÔÃû£¬  dataField Ôò±íÊ¾Êı¾İ¿âµÄ×Ö¶ÎÃû
+	 * å¦‚æœä½ çš„æ•°æ®åº“å­—æ®µåå’Œ å±æ€§åä¸ä¸€æ · ï¼Œå¯ä»¥ä½¿ç”¨  field => dataField çš„æ–¹å¼èµ‹å€¼
+	 * field è¡¨ç¤ºç±»çš„å±æ€§åï¼Œ  dataField åˆ™è¡¨ç¤ºæ•°æ®åº“çš„å­—æ®µå
 	 * @param str
 	 * @return
 	 */
@@ -90,7 +90,7 @@ public abstract class FingerObject implements IFingerObject{
 							continue;
 						}
 					}else{
-						FingerUtils.debug("±í" + this.table + "²¢Ã»ÓĞÉèÖÃÖ÷¼ü£¬ËùÒÔÎŞ·¨²åÈëÖ÷¼ü");
+						FingerUtils.debug("è¡¨" + this.table + "å¹¶æ²¡æœ‰è®¾ç½®ä¸»é”®ï¼Œæ‰€ä»¥æ— æ³•æ’å…¥ä¸»é”®");
 					}
 				}
 				param[i] = fcs.getGetMethod(this.fields.get(i)).invoke(entity);
@@ -171,10 +171,10 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	/**
-	 * ²éÑ¯£¬ ½á¹û·µ»¹Ò»¸ö List<Map<String,Object>> ÀàĞÍ  <br/>
-	 * Map<String,Object> ´ú±íÒ»ÌõÊı¾İĞĞ£¬ String ÎªÁĞÃû£¬  ObjectÎªÖµ¡¡<br/>
-	 * List ±íÊ¾ºÃ¶à¸öÊı¾İĞĞ
-	 * @param sql SQL Óï¾ä
+	 * æŸ¥è¯¢ï¼Œ ç»“æœè¿”è¿˜ä¸€ä¸ª List<Map<String,Object>> ç±»å‹  <br/>
+	 * Map<String,Object> ä»£è¡¨ä¸€æ¡æ•°æ®è¡Œï¼Œ String ä¸ºåˆ—åï¼Œ  Objectä¸ºå€¼ã€€<br/>
+	 * List è¡¨ç¤ºå¥½å¤šä¸ªæ•°æ®è¡Œ
+	 * @param sql SQL è¯­å¥
 	 * @param param
 	 * @return
 	 */
@@ -198,7 +198,7 @@ public abstract class FingerObject implements IFingerObject{
 			//System.out.println("resultColumns: "+ columns);
 			while(rSet.next()){
 				Map<String, Object> map = new HashMap<String, Object>();
-				//¸Ä±äËã·¨
+				//æ”¹å˜ç®—æ³•
 				for (String item : columns) {
 					map.put(item, rSet.getObject(item));
 				}
@@ -249,8 +249,8 @@ public abstract class FingerObject implements IFingerObject{
 	 * 
 	 * @param con
 	 * @param sql 
-	 * @param flag Ö´ĞĞÍêsql Óï¾ä£¬ÊÇ·ñ¹Ø±ÕÁ¬½Ó  true: ¹Ø±Õ£¬ false: ²»¹Ø±Õ <br/>
-	 *   ×¢£¬´Ë´¦Ö»ÊÇÕë¶ÔÁ´½Ó
+	 * @param flag æ‰§è¡Œå®Œsql è¯­å¥ï¼Œæ˜¯å¦å…³é—­è¿æ¥  true: å…³é—­ï¼Œ false: ä¸å…³é—­ <br/>
+	 *   æ³¨ï¼Œæ­¤å¤„åªæ˜¯é’ˆå¯¹é“¾æ¥
 	 * @param param
 	 * @return
 	 */

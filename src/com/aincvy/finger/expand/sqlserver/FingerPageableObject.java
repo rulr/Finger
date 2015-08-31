@@ -1,10 +1,10 @@
-package com.aincvy.finger.expand.sqlserver;
+ï»¿package com.aincvy.finger.expand.sqlserver;
 
 import com.aincvy.finger.FingerExpandObject;
 
 /**
- * ´øÓĞÅÅĞò¹¦ÄÜµÄ <p>
- * Õë¶ÔÓÚSqlServer ½øĞĞÊµÏÖ
+ * å¸¦æœ‰æ’åºåŠŸèƒ½çš„ <p>
+ * é’ˆå¯¹äºSqlServer è¿›è¡Œå®ç°
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7

@@ -1,10 +1,10 @@
-package com.aincvy.finger.expand.oracle;
+ï»¿package com.aincvy.finger.expand.oracle;
 
 import com.aincvy.finger.FingerExpandObject;
 
 /**
- * ´øÓĞÅÅĞò¹¦ÄÜµÄ <p>
- * Õë¶ÔÓÚOracle½øĞĞÊµÏÖ
+ * å¸¦æœ‰æ’åºåŠŸèƒ½çš„ <p>
+ * é’ˆå¯¹äºOracleè¿›è¡Œå®ç°
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7

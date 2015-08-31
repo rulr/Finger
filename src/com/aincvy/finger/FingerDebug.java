@@ -1,11 +1,11 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Finger µ÷ÊÔÀà <p>
- * ×¢£º ÈçÎ´ÉèÖÃ common-logging µÄÅäÖÃ£¬debug·½·¨¿ÉÄÜ²»»á²úÉúÊä³ö
+ * Finger è°ƒè¯•ç±» <p>
+ * æ³¨ï¼š å¦‚æœªè®¾ç½® common-logging çš„é…ç½®ï¼Œdebugæ–¹æ³•å¯èƒ½ä¸ä¼šäº§ç”Ÿè¾“å‡º
  * 
  * @author World
  * @version alpha 0.0.1
@@ -25,7 +25,7 @@ public final class FingerDebug {
 	}
 	
 	/**
-	 * ×¢£º ÈçÎ´ÉèÖÃ common-logging µÄÅäÖÃ£¬debug·½·¨¿ÉÄÜ²»»á²úÉúÊä³ö
+	 * æ³¨ï¼š å¦‚æœªè®¾ç½® common-logging çš„é…ç½®ï¼Œdebugæ–¹æ³•å¯èƒ½ä¸ä¼šäº§ç”Ÿè¾“å‡º
 	 * @param message
 	 * @param t
 	 */

@@ -1,11 +1,11 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.lang.reflect.Method;
 
 /**
- * ¹¤¾ßÀà <p>
- * ±¾Àà²»¿É±»¼Ì³Ğ<p>
- * ±¾Àà²»¿É±» new <p>
+ * å·¥å…·ç±» <p>
+ * æœ¬ç±»ä¸å¯è¢«ç»§æ‰¿<p>
+ * æœ¬ç±»ä¸å¯è¢« new <p>
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7
@@ -17,7 +17,7 @@ public final class FingerUtils {
 	}
 	
 	/**
-	 * °Ñitem µÄÊ××Ö·û±ä³É´óĞ´
+	 * æŠŠitem çš„é¦–å­—ç¬¦å˜æˆå¤§å†™
 	 * @param item
 	 * @return
 	 */
@@ -47,7 +47,7 @@ public final class FingerUtils {
 	}
 	
 	/**
-	 * ÔÚÕâ¸ö·½·¨ÀïÃæÓ¦¸Ã½øĞĞ»º´æ²Ù×÷
+	 * åœ¨è¿™ä¸ªæ–¹æ³•é‡Œé¢åº”è¯¥è¿›è¡Œç¼“å­˜æ“ä½œ
 	 * @param claxx
 	 * @param methodName
 	 * @return
@@ -62,7 +62,7 @@ public final class FingerUtils {
 	}
 	
 	/**
-	 * ×¢£º ÈçÎ´ÉèÖÃ common-logging µÄÅäÖÃ£¬debug·½·¨¿ÉÄÜ²»»á²úÉúÊä³ö
+	 * æ³¨ï¼š å¦‚æœªè®¾ç½® common-logging çš„é…ç½®ï¼Œdebugæ–¹æ³•å¯èƒ½ä¸ä¼šäº§ç”Ÿè¾“å‡º
 	 * @see #debug(String, Throwable)
 	 * @param message
 	 */
@@ -71,11 +71,11 @@ public final class FingerUtils {
 	}
 	
 	/**
-	 * Ö»ÓĞÔÚµ÷ÊÔÄ£Ê½ÏÂ£¬ ±¾·½·¨µÄµ÷ÓÃ²ÅÎªÓĞĞ§ £¬ÉèÖÃµ÷ÊÔµÄ·½·¨Çë¿´ FingerBus.Debug <p>
-	 * Èç¹û²»Ïë´ò¿ªµ÷ÊÔÄ£Ê½£¬»¹Ï£ÍûÊä³öµ÷ÊÔĞÅÏ¢£¬ÇëÊ¹ÓÃ FingerDebug Àà<p>
-	 * ×¢£º ÈçÎ´ÉèÖÃ common-logging µÄÅäÖÃ£¬debug·½·¨¿ÉÄÜ²»»á²úÉúÊä³ö
+	 * åªæœ‰åœ¨è°ƒè¯•æ¨¡å¼ä¸‹ï¼Œ æœ¬æ–¹æ³•çš„è°ƒç”¨æ‰ä¸ºæœ‰æ•ˆ ï¼Œè®¾ç½®è°ƒè¯•çš„æ–¹æ³•è¯·çœ‹ FingerBus.Debug <p>
+	 * å¦‚æœä¸æƒ³æ‰“å¼€è°ƒè¯•æ¨¡å¼ï¼Œè¿˜å¸Œæœ›è¾“å‡ºè°ƒè¯•ä¿¡æ¯ï¼Œè¯·ä½¿ç”¨ FingerDebug ç±»<p>
+	 * æ³¨ï¼š å¦‚æœªè®¾ç½® common-logging çš„é…ç½®ï¼Œdebugæ–¹æ³•å¯èƒ½ä¸ä¼šäº§ç”Ÿè¾“å‡º
 	 * 
-	 * @param message µ÷ÊÔÏûÏ¢
+	 * @param message è°ƒè¯•æ¶ˆæ¯
 	 * @param t 
 	 */
 	public static void debug(String message,Throwable t){

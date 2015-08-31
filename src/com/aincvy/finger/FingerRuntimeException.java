@@ -1,7 +1,7 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 /**
- * FingerÔËĞĞÊ±Òì³£ <p>
+ * Fingerè¿è¡Œæ—¶å¼‚å¸¸ <p>
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7

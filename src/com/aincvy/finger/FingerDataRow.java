@@ -1,4 +1,4 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import com.aincvy.finger.inf.IFingerDataRow;
 import com.aincvy.finger.inf.IFingerDataTable;
 
 /**
- * Finger Êı¾İĞĞ
+ * Finger æ•°æ®è¡Œ
  * @author World
  * @version alpha 0.0.2
  * @since JDK 1.7

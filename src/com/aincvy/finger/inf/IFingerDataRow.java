@@ -1,10 +1,10 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * Finger Êı¾İĞĞ
+ * Finger æ•°æ®è¡Œ
  * @author World
  * @version alpha 0.0.2
  * @since JDK 1.7
@@ -12,20 +12,20 @@ import java.util.List;
 public interface IFingerDataRow extends List<Object>,Serializable {
 	
 	/**
-	 * »ñÈ¡±¾ĞĞµÄÄ³ÁĞÊı¾İ
-	 * @param column ÁĞÃû
+	 * è·å–æœ¬è¡Œçš„æŸåˆ—æ•°æ®
+	 * @param column åˆ—å
 	 * @return
 	 */
 	public Object get(String column);
 	
 	/**
-	 * »ñÈ¡±¾ĞĞËùÔÚµÄÊı¾İ±í¶ÔÏó
+	 * è·å–æœ¬è¡Œæ‰€åœ¨çš„æ•°æ®è¡¨å¯¹è±¡
 	 * @return
 	 */
 	public IFingerDataTable getTable();
 	
 	/**
-	 * »ñÈ¡±¾ĞĞÔÚÊı¾İ±íÖĞµÄĞĞË÷Òı
+	 * è·å–æœ¬è¡Œåœ¨æ•°æ®è¡¨ä¸­çš„è¡Œç´¢å¼•
 	 * @return
 	 */
 	public int getRowIndex();

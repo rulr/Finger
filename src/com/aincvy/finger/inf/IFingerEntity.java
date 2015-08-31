@@ -1,8 +1,8 @@
-package com.aincvy.finger.inf;
+锘縫ackage com.aincvy.finger.inf;
 
 /**
- * Finger 实体 <p>
- * 实体类应该实现本接口
+ * Finger 瀹炰綋 <p>
+ * 瀹炰綋绫诲簲璇ュ疄鐜版湰鎺ュ彛
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7

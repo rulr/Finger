@@ -1,3 +1,3 @@
 # Finger
-测试行
-如果是UTF-8编码的话 会不会乱码
+This is the new line.
+Finger Wiki :  http://www.aincvy.com/wiki/doku.php?id=finger:default

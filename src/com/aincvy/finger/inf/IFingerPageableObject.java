@@ -1,9 +1,9 @@
-package com.aincvy.finger.inf;
+ï»¿package com.aincvy.finger.inf;
 
 import java.util.List;
 
 /**
- * ¾ßÓĞÅÅĞòÄÜÁ¦µÄFinger¶ÔÏó <p>
+ * å…·æœ‰æ’åºèƒ½åŠ›çš„Fingerå¯¹è±¡ <p>
  * @author World
  * @version alpha 0.0.4
  * @since JDK 1.7
@@ -11,50 +11,50 @@ import java.util.List;
 public interface IFingerPageableObject {
 
 	/**
-	 * »ñÈ¡¸ø¶¨²ÎÊıµÄ ÉÏÒ»¸öidÖµ <p>
+	 * è·å–ç»™å®šå‚æ•°çš„ ä¸Šä¸€ä¸ªidå€¼ <p>
 	 * @param id
 	 * @return
 	 */
 	public Object previousId(Object id); 
 	
 	/**
-	 * »ñÈ¡¸ø¶¨²ÎÊıµÄÏÂÒ»¸öidÖµ <p>
+	 * è·å–ç»™å®šå‚æ•°çš„ä¸‹ä¸€ä¸ªidå€¼ <p>
 	 * @param id
 	 * @return
 	 */
 	public Object nextId(Object id);
 	
 	/**
-	 * ÉèÖÃÒ»Ò³ÏÔÊ¾µÄÊıÁ¿
+	 * è®¾ç½®ä¸€é¡µæ˜¾ç¤ºçš„æ•°é‡
 	 * @param pageNum 
 	 */
 	public void setPageSize(int pageSize);
 	
 	/**
-	 * »ñÈ¡Ö¸¶¨Ò³µÄÄÚÈİ <p>
-	 * @param pageNum  Ò³ÂëÓ¦´Ó1¿ªÊ¼¼ÆËã£¬ 0ºÍ1¾ßÓĞÏàÍ¬µÄĞ§¹û
+	 * è·å–æŒ‡å®šé¡µçš„å†…å®¹ <p>
+	 * @param pageNum  é¡µç åº”ä»1å¼€å§‹è®¡ç®—ï¼Œ 0å’Œ1å…·æœ‰ç›¸åŒçš„æ•ˆæœ
 	 * @param pageSize
 	 * @return
 	 */
 	public <T> List<T> page(int pageNum,int pageSize);
 	
 	/**
-	 * »ñÈ¡Ö¸¶¨Ò³µÄÄÚÈİ <p>
-	 * @param pageNum  Ò³Âë£¬Ó¦´Ó1¿ªÊ¼¼ÆËã£¬ 0ºÍ1¾ßÓĞÏàÍ¬µÄĞ§¹û
+	 * è·å–æŒ‡å®šé¡µçš„å†…å®¹ <p>
+	 * @param pageNum  é¡µç ï¼Œåº”ä»1å¼€å§‹è®¡ç®—ï¼Œ 0å’Œ1å…·æœ‰ç›¸åŒçš„æ•ˆæœ
 	 * @return
 	 */
 	public <T> List<T> page(int pageNum);
 	
 	
 	/**
-	 * »ñÈ¡×ÜÒ³Êı
+	 * è·å–æ€»é¡µæ•°
 	 * @return
 	 */
 	public int totalPageNum();
 	
 	/**
-	 * °´ÕÕÃ¿Ò³ pageSizeµÄÊıÁ¿½øĞĞ·ÖÒ³£¬·µ»Ø×ÜÒ³Êı
-	 * @param pageSize Ò»Ò³ÏÔÊ¾µÄÊıÁ¿
+	 * æŒ‰ç…§æ¯é¡µ pageSizeçš„æ•°é‡è¿›è¡Œåˆ†é¡µï¼Œè¿”å›æ€»é¡µæ•°
+	 * @param pageSize ä¸€é¡µæ˜¾ç¤ºçš„æ•°é‡
 	 * @return
 	 */
 	public int totalPageNum(int pageSize);

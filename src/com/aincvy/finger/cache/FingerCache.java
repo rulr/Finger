@@ -1,4 +1,4 @@
-package com.aincvy.finger.cache;
+ï»¿package com.aincvy.finger.cache;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import com.aincvy.finger.FingerRuntimeException;
 import com.aincvy.finger.FingerUtils;
 
 /**
- * Finger »º´æ´¦Àí <p>
- * ±¾Àà²»¿É±»¼Ì³Ğ£¬²»¿ÉÊ¹ÓÃ¹¹Ôì·½·¨Éú²ú¶ÔÏó <p>
- * Ó¦Ê¹ÓÃ±¾ÀàµÄ¾²Ì¬·½·¨À´»ñÈ¡»º´æĞÅÏ¢ <p>
+ * Finger ç¼“å­˜å¤„ç† <p>
+ * æœ¬ç±»ä¸å¯è¢«ç»§æ‰¿ï¼Œä¸å¯ä½¿ç”¨æ„é€ æ–¹æ³•ç”Ÿäº§å¯¹è±¡ <p>
+ * åº”ä½¿ç”¨æœ¬ç±»çš„é™æ€æ–¹æ³•æ¥è·å–ç¼“å­˜ä¿¡æ¯ <p>
  * @author World
  * @version alpha 0.0.2
  * @since JDK 1.7
@@ -38,15 +38,15 @@ public final class FingerCache {
 	// methods.
 	
 	/**
-	 * ÇåÀí»º´æ
+	 * æ¸…ç†ç¼“å­˜
 	 */
 	public static void clearCache(){
 		map.clear();
 	}
 	
 	/**
-	 * ÖØ½¨»º´æ£¬Èç¹ûÄ³ÀàµÄ»º´æ¼ä¸ô Ğ¡ÓÚ {@value #updateInterval} £¬Ôò²»½øĞĞ¸üĞÂ²Ù×÷ <p>
-	 * @deprecated Ğ´µ½Ò»°ë·¢ÏÖÕâ¸ö·½·¨Ã»Ê²Ã´ÓÃ´¦Ñ½¡£¡£¡£  ±¾·½·¨²¢Î´½øĞĞÍêÈ«ÊµÏÖ£¬Çë²»ÒªÊ¹ÓÃ±¾·½·¨
+	 * é‡å»ºç¼“å­˜ï¼Œå¦‚æœæŸç±»çš„ç¼“å­˜é—´éš” å°äº {@value #updateInterval} ï¼Œåˆ™ä¸è¿›è¡Œæ›´æ–°æ“ä½œ <p>
+	 * @deprecated å†™åˆ°ä¸€åŠå‘ç°è¿™ä¸ªæ–¹æ³•æ²¡ä»€ä¹ˆç”¨å¤„å‘€ã€‚ã€‚ã€‚  æœ¬æ–¹æ³•å¹¶æœªè¿›è¡Œå®Œå…¨å®ç°ï¼Œè¯·ä¸è¦ä½¿ç”¨æœ¬æ–¹æ³•
 	 */
 	public static synchronized void rebuildCache() {
 		clearCache();
@@ -64,8 +64,8 @@ public final class FingerCache {
 	}
 	
 	/**
-	 * ¸üĞÂËùÓĞ»º´æ £¬ÎŞÊÓ»º´æµÄÊ±¼ä¼ä¸ô
-	 * @deprecated Ğ´µ½Ò»°ë·¢ÏÖÕâ¸ö·½·¨Ã»Ê²Ã´ÓÃ´¦Ñ½¡£¡£¡£  ±¾·½·¨²¢Î´½øĞĞÍêÈ«ÊµÏÖ£¬Çë²»ÒªÊ¹ÓÃ±¾·½·¨
+	 * æ›´æ–°æ‰€æœ‰ç¼“å­˜ ï¼Œæ— è§†ç¼“å­˜çš„æ—¶é—´é—´éš”
+	 * @deprecated å†™åˆ°ä¸€åŠå‘ç°è¿™ä¸ªæ–¹æ³•æ²¡ä»€ä¹ˆç”¨å¤„å‘€ã€‚ã€‚ã€‚  æœ¬æ–¹æ³•å¹¶æœªè¿›è¡Œå®Œå…¨å®ç°ï¼Œè¯·ä¸è¦ä½¿ç”¨æœ¬æ–¹æ³•
 	 */
 	public static synchronized void updateAllCache() {
 		for (Entry<String, FingerCacheClass> item : map.entrySet()) {
@@ -95,7 +95,7 @@ public final class FingerCache {
 		try {
 			return map.get(name);
 		} catch (Exception e) {
-			throw new FingerRuntimeException("ÔÚ³¢ÊÔÀàĞÍ×ª»»Ê±Ê§°Ü",e);
+			throw new FingerRuntimeException("åœ¨å°è¯•ç±»å‹è½¬æ¢æ—¶å¤±è´¥",e);
 		}
 	}
 	

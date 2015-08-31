@@ -1,4 +1,4 @@
-package com.aincvy.finger.bridge;
+ï»¿package com.aincvy.finger.bridge;
 
 import javax.annotation.Resource;
 
@@ -8,7 +8,7 @@ import com.aincvy.finger.FingerBus;
 import com.aincvy.finger.FingerUtils;
 
 /**
- * Finger µÄSpring ÇÅ
+ * Finger çš„Spring æ¡¥
  * @author World
  * @since JDK 1.7
  * @version alpha 0.0.2

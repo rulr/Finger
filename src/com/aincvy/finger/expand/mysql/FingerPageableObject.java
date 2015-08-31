@@ -1,4 +1,4 @@
-package com.aincvy.finger.expand.mysql;
+ï»¿package com.aincvy.finger.expand.mysql;
 
 import java.util.List;
 import java.util.Map;
@@ -7,8 +7,8 @@ import com.aincvy.finger.FingerExpandObject;
 import com.aincvy.finger.inf.IFingerPageableObject;
 
 /**
- * ´øÓĞÅÅĞò¹¦ÄÜµÄ Finger¶ÔÏó <p>
- * Õë¶ÔÓÚMysql ½øĞĞÊµÏÖ
+ * å¸¦æœ‰æ’åºåŠŸèƒ½çš„ Fingerå¯¹è±¡ <p>
+ * é’ˆå¯¹äºMysql è¿›è¡Œå®ç°
  * @author World
  * @version alpha 0.0.9
  * @since JDK 1.7

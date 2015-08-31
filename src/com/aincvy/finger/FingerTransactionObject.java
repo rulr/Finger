@@ -1,4 +1,4 @@
-package com.aincvy.finger;
+ï»¿package com.aincvy.finger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import com.aincvy.finger.inf.IFingerEntity;
 import com.aincvy.finger.inf.IFingerTransactionObject;
 
 /**
- * ¾ßÓĞÊÂÎñÄÜÁ¦µÄFingerObject <p>
+ * å…·æœ‰äº‹åŠ¡èƒ½åŠ›çš„FingerObject <p>
  * @author World
  * @version alpha 0.0.3
  * @since JDK 1.7
@@ -43,7 +43,7 @@ public class FingerTransactionObject extends FingerObject implements IFingerTran
 			try {
 				Connection con = connectionMap.remove(tid);
 				if (con == null) {
-					throw new FingerRuntimeException("ÎŞ·¨Ìá½»ÊÂÎñ£¬ÒòÎª¸ø¶¨µÄÊÂÎñid(tid) ²»´æÔÚ");
+					throw new FingerRuntimeException("æ— æ³•æäº¤äº‹åŠ¡ï¼Œå› ä¸ºç»™å®šçš„äº‹åŠ¡id(tid) ä¸å­˜åœ¨");
 				}
 				con.commit();
 				con.close();
@@ -61,7 +61,7 @@ public class FingerTransactionObject extends FingerObject implements IFingerTran
 			try {
 				Connection con = connectionMap.remove(tid);
 				if (con == null) {
-					throw new FingerRuntimeException("ÎŞ·¨¶ÔÊÂÎñ½øĞĞ»Ø¹ö£¬ÒòÎª¸ø¶¨µÄÊÂÎñid(tid)²»´æÔÚ");
+					throw new FingerRuntimeException("æ— æ³•å¯¹äº‹åŠ¡è¿›è¡Œå›æ»šï¼Œå› ä¸ºç»™å®šçš„äº‹åŠ¡id(tid)ä¸å­˜åœ¨");
 				}
 				con.rollback();
 				con.close();
@@ -73,7 +73,7 @@ public class FingerTransactionObject extends FingerObject implements IFingerTran
 
 	private Connection getConnection(int tid) {
 		if (!connectionMap.containsKey(tid)) {
-			throw new FingerRuntimeException("¸ø¶¨µÄÊÂÎñidÓĞÎó£¬Çë¼ì²é");
+			throw new FingerRuntimeException("ç»™å®šçš„äº‹åŠ¡idæœ‰è¯¯ï¼Œè¯·æ£€æŸ¥");
 		}
 		return connectionMap.get(tid);
 	}

@@ -1,4 +1,4 @@
-package com.aincvy.finger.cache;
+ï»¿package com.aincvy.finger.cache;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -10,7 +10,7 @@ import com.aincvy.finger.FingerRuntimeException;
 import com.aincvy.finger.FingerUtils;
 
 /**
- * Finger »º´æÀà ¶ÔÏó£¬ »º´æÁËÒ»¸ö ÀàµÄÊµÀı£¬ ºÍÀàµÄÈ«²¿ ¹«ÓĞ·½·¨
+ * Finger ç¼“å­˜ç±» å¯¹è±¡ï¼Œ ç¼“å­˜äº†ä¸€ä¸ª ç±»çš„å®ä¾‹ï¼Œ å’Œç±»çš„å…¨éƒ¨ å…¬æœ‰æ–¹æ³•
  * @author World
  * @version alpha 0.0.1
  * @since JDK 1.7
@@ -22,25 +22,25 @@ public class FingerCacheClass implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// »º´æÀà¶ÔÏóµÄ µ¥Ò»ÊµÀı
+	// ç¼“å­˜ç±»å¯¹è±¡çš„ å•ä¸€å®ä¾‹
 	private Object instanceObject;
-	// »º´æµÄÀà¶ÔÏó
+	// ç¼“å­˜çš„ç±»å¯¹è±¡
 	private Class<?> classObject;
-	// »º´æÀàµÄ·½·¨
+	// ç¼“å­˜ç±»çš„æ–¹æ³•
 	private Map<String, Method> methodMap = null;
 
 	private long lastUpdateTime = 0L;
 	
 	public FingerCacheClass(Class<?> claxx) {
 		if (claxx == null) {
-			throw new FingerRuntimeException("±»»º´æµÄÀàĞÍ²»ÄÜÎªnull");
+			throw new FingerRuntimeException("è¢«ç¼“å­˜çš„ç±»å‹ä¸èƒ½ä¸ºnull");
 		}
 		methodMap = Collections.synchronizedMap(new HashMap<String, Method>());
 		rebuildCache(claxx);
 	}
 	
 	/**
-	 * ÖØ½¨±¾ÀàµÄÊôĞÔ
+	 * é‡å»ºæœ¬ç±»çš„å±æ€§
 	 * @param claxx
 	 */
 	public void rebuildCache(Class<?> claxx) {
@@ -62,7 +62,7 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * »ñÈ¡±»»º´æµÄ Class ¶ÔÏó
+	 * è·å–è¢«ç¼“å­˜çš„ Class å¯¹è±¡
 	 * @return
 	 */
 	public Class<?> getCachedClass() {
@@ -70,8 +70,8 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * »ñÈ¡±»»º´æµÄclass ¶ÔÏóµÄµÄÊµÀıµÄ Î¨Ò»ÊµÀı <p>
-	 * ¼´£¬Í¨¹ıµ÷ÓÃ class.newInstance() ·½·¨»ñÈ¡µ½µÄ¶ÔÏó
+	 * è·å–è¢«ç¼“å­˜çš„class å¯¹è±¡çš„çš„å®ä¾‹çš„ å”¯ä¸€å®ä¾‹ <p>
+	 * å³ï¼Œé€šè¿‡è°ƒç”¨ class.newInstance() æ–¹æ³•è·å–åˆ°çš„å¯¹è±¡
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -83,8 +83,8 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * »ñÈ¡±»»º´æµÄÄ³¸ö·½·¨
-	 * @param name ·½·¨Ãû
+	 * è·å–è¢«ç¼“å­˜çš„æŸä¸ªæ–¹æ³•
+	 * @param name æ–¹æ³•å
 	 * @return
 	 */
 	public Method getMethod(String name) {
@@ -92,8 +92,8 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * »ñÈ¡Ä³¸öÊôĞÔµÄ  setter£¬ ÊôĞÔÃû²»ĞèÒªĞ´´óĞ´
-	 * @param name ÊôĞÔÃû
+	 * è·å–æŸä¸ªå±æ€§çš„  setterï¼Œ å±æ€§åä¸éœ€è¦å†™å¤§å†™
+	 * @param name å±æ€§å
 	 * @return
 	 */
 	public Method getSetMethod(String name) {
@@ -101,8 +101,8 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * »ñÈ¡Ä³¸öÊôĞÔµÄgetter £¬ÊôĞÔÃû²»ĞèÒª´óĞ´
-	 * @param name ÊôĞÔÃû
+	 * è·å–æŸä¸ªå±æ€§çš„getter ï¼Œå±æ€§åä¸éœ€è¦å¤§å†™
+	 * @param name å±æ€§å
 	 * @return
 	 */
 	public Method getGetMethod(String name){
@@ -110,7 +110,7 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * ²úÉúÒ»¸öĞÂµÄÊµÀı
+	 * äº§ç”Ÿä¸€ä¸ªæ–°çš„å®ä¾‹
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -118,12 +118,12 @@ public class FingerCacheClass implements Serializable{
 		try {
 			return (T)classObject.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
-			throw new FingerRuntimeException("ÔÚ²úÉúÒ»¸öÀàµÄĞÂÊµÀıÊ±Ê§°Ü",e);
+			throw new FingerRuntimeException("åœ¨äº§ç”Ÿä¸€ä¸ªç±»çš„æ–°å®ä¾‹æ—¶å¤±è´¥",e);
 		}
 	}
 	
 	/**
-	 * »ñÈ¡±»»º´æµÄÀàÃû
+	 * è·å–è¢«ç¼“å­˜çš„ç±»å
 	 * @return
 	 */
 	public String getClassName() {
@@ -131,7 +131,7 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
-	 * °Ñ lastUpdateTime ÉèÖÃÎª 0
+	 * æŠŠ lastUpdateTime è®¾ç½®ä¸º 0
 	 */
 	public void resetLastUpdateTime() {
 		lastUpdateTime = 0L;
