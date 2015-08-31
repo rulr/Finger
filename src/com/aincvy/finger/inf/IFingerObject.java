@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Finger 对象接口
  * @author World
- * @version alpha 0.0.8
+ * @version alpha 0.1.0
  * @since JDK 1.7
  */
 public interface IFingerObject {
@@ -86,21 +86,22 @@ public interface IFingerObject {
 	public int delete(Connection con,Object id);
 	
 	/**
-	 * 
+	 * 查询本表中的第一条记录
 	 * @return
 	 */
 	public <T> T fetchFirst();
 	
 	/**
-	 * 
-	 * @param condition  条件
+	 * 查询本表中的第一条记录
+	 * @param condition 条件
+	 * @param params 参数
 	 * @return
 	 */
-	public <T> T fetchFirst(String condition);
+	public <T> T fetchFirst(String condition,Object ...params);
 	
 	/**
-	 * 
-	 * @param id
+	 * 根据主键 查找记录， 注：  不适合组合主键
+	 * @param id 主键值
 	 * @return
 	 */
 	public <T> T fetch(Object id);
@@ -112,11 +113,11 @@ public interface IFingerObject {
 	public <T> List<T> fetchTable();
 	
 	/**
-	 * 
+	 * 执行查询操作
 	 * @param sql
 	 * @return
 	 */
-	public <T> List<T> executeQuery(String sql);
+	public <T> List<T> executeQuery(String sql,Object ...param);
 	
 	
 	/**

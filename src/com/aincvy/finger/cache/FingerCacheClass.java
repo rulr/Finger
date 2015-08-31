@@ -110,6 +110,15 @@ public class FingerCacheClass implements Serializable{
 	}
 	
 	/**
+	 * 获取某个Boolean属性的值的方法 ，属性名不需要大写
+	 * @param name 属性名
+	 * @return
+	 */
+	public Method getIsMethod(String name){
+		return methodMap.get(String.format("is%s", FingerUtils.firstToUpper(name)));
+	}
+	
+	/**
 	 * 产生一个新的实例
 	 * @return
 	 */

@@ -6,12 +6,13 @@ import java.util.List;
  * Finger 扩展Object ，主攻查询操作
  * @author World
  * @since JDK 1.7
- * @version alpha 0.0.3
+ * @version alpha 0.0.4
  */
 public interface IFingerExpandObject {
 
 	/**
-	 * 把SQL语句的查询结果放入一个IFingerDataTable 里面
+	 * 拓展性方法， 执行一个查询语句
+	 * 然后把SQL语句的查询结果放入一个IFingerDataTable 里面
 	 * @param sql 查询语句
 	 * @param params 参数列表
 	 * @return
@@ -19,7 +20,7 @@ public interface IFingerExpandObject {
 	public IFingerDataTable exQuery(String sql,Object ...params);
 	
 	/**
-	 * 
+	 * 拓展性方法， 如果你认为本方法过于难用，可以采用直接写Sql语句的形式来使用别的方法
 	 * @param claxx 实体模板
 	 * @param rule 把结果转换成实体的规则 ,具体写法为: cName => customer , 即结果字段名 => 类属性名<br/>
 	 *         如果规则没有说明的内容，则 如果有类属性与结果字段名相同的信息则被写入类实体
@@ -30,6 +31,7 @@ public interface IFingerExpandObject {
 	public <T> List<T> exQuery(Class<T> claxx, String rule,String sql,Object ...params);
 	
 	/**
+	 * 拓展性方法， 如果你认为本方法过于难用，可以采用直接写Sql语句的形式来使用别的方法 <br/>
 	 * 只插入 rule内表述的字段， 返回值为 returnBack 所指示的内容
 	 * @param rule 规则表述 ，如果数据库字段和类的属性名一样的话则用逗号分隔每个字段名 例如：  col1,col2,col3... <br/>
 	 * 不一致的话，则应使用：  field1 => col1,field2 => col2,field3 => col3 的方式
@@ -40,5 +42,15 @@ public interface IFingerExpandObject {
 	public int exInsert(String rule,IFingerEntity entity,int returnBack);
 	
 	
+
+	/**
+	 * 带规则的 事务更新
+	 * @param tid
+	 * @param entity
+	 * @param rule  规则表示  如果数据库字段和类的属性名一样的话则用逗号分隔每个字段名 例如：  col1,col2,col3... <br/>
+	 * 不一致的话，则应使用：  field1 => col1,field2 => col2,field3 => col3 的方式
+	 * @return
+	 */
+	public int exTransactionUpdate(int tid,IFingerEntity entity,String rule);
 	
 }

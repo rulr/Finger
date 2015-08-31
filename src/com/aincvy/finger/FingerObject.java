@@ -1,6 +1,7 @@
 ﻿package com.aincvy.finger;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.aincvy.finger.cache.FingerCache;
 import com.aincvy.finger.cache.FingerCacheClass;
@@ -20,7 +22,7 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.0.7
+ * @version alpha 0.1.0
  * @since JDK 1.7
  */
 public abstract class FingerObject implements IFingerObject{
@@ -133,7 +135,16 @@ public abstract class FingerObject implements IFingerObject{
 		FingerCacheClass fcs = FingerCache.getCacheClass(entity.getClass());
 		try {
 			for (int i = 0; i < param.length-1; i++) {
-				param[i] = fcs.getGetMethod(fields.get(i)).invoke(entity);
+				String fieldString = fields.get(i);
+				Method method = fcs.getGetMethod(fieldString);
+				if (method == null) {
+					method = fcs.getIsMethod(fieldString);
+					if (method == null) {
+						FingerUtils.debug(String.format("并不能获取到类%s的属性%s，因为该属性的getter并没有找到，这可能会产生一个错误", fcs.getCachedClass().getName(),fieldString));
+						continue;
+					}
+				}
+				param[i] = method.invoke(entity);
 				sqlBuffer.append(String.format("`%s`=?,", dataFields.get(i)));
 			}
 		} catch (IllegalAccessException e) {
@@ -322,9 +333,13 @@ public abstract class FingerObject implements IFingerObject{
 		T entity = null;
 		try {
 			entity = fcs.newInstance();
-			for (String item : this.fields) {
-				fcs.getSetMethod(item).invoke(entity, map.get(item));
-//				FingerUtils.getSetMethod(claxx, FingerUtils.setMethodName(item)).invoke(entity, map.get(item));
+			for (Entry<String, Object> item : map.entrySet()) {
+				Method method = fcs.getSetMethod(item.getKey());
+				if (method == null) {
+					FingerUtils.debug(String.format("并没有设置类 %s 的属性%s为：  %s，因为并没有找到相应的setter", claxx.getName(),item.getKey(),item.getValue()));
+					continue;
+				}
+				method.invoke(entity, item.getValue());
 			}
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
@@ -346,7 +361,7 @@ public abstract class FingerObject implements IFingerObject{
 	
 
 	@Override
-	public <T> T fetchFirst(String condition) {
+	public <T> T fetchFirst(String condition, Object... params) {
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT * FROM `");
 		sqlBuilder.append(this.table);
@@ -356,7 +371,7 @@ public abstract class FingerObject implements IFingerObject{
 			sqlBuilder.append(condition);
 		}
 		sqlBuilder.append(" LIMIT 1");
-		List<T> list = executeQuery(sqlBuilder.toString());
+		List<T> list = executeQuery(sqlBuilder.toString(),params);
 		if (list == null || list.size() <= 0) {
 			return null;
 		}
@@ -365,23 +380,27 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	@Override
-	public <T> List<T> executeQuery(String sql) {
+	public <T> List<T> executeQuery(String sql,Object... param) {
 		FingerUtils.debug("Exec Sql: " + sql);
-		List<Map<String, Object>> list = query(sql);
+		List<Map<String, Object>> list = query(sql,param);
 		if (list.size() <= 0) {
 			return null;
 		}
 		//FingerUtils.debug(list.toString());
 		List<T> ret = new ArrayList<>();
+		Class<?> claxx = FingerBus.getEntityClass(this.getClass());
+		FingerCacheClass fcs = FingerCache.getCacheClass(claxx);
 		for (Map<String, Object> map : list) {
-			Class<?> claxx = FingerBus.getEntityClass(this.getClass());
-			FingerCacheClass fcs = FingerCache.getCacheClass(claxx);
 			T entity = null;
 			try {
 				entity = fcs.newInstance();
-				for (String item : this.fields) {
-					fcs.getSetMethod(item).invoke(entity, map.get(item));
-//					FingerUtils.getSetMethod(claxx, FingerUtils.setMethodName(item)).invoke(entity, map.get(item));
+				for (Entry<String, Object> t : map.entrySet()) {
+					Method method = fcs.getSetMethod(t.getKey());
+					if (method == null) {
+						FingerUtils.debug(String.format("并没有设置类 %s 的属性%s为：  %s，因为并没有找到相应的setter", claxx.getName(),t.getKey(),t.getValue()));
+						continue;
+					}
+					method.invoke(entity, t.getValue());
 				}
 				ret.add( entity);
 			} catch (IllegalAccessException e) {
@@ -405,7 +424,6 @@ public abstract class FingerObject implements IFingerObject{
 		}
 		return new Integer(String.valueOf(list.get(0).get("count")));
 	}
-
 	
 	
 }

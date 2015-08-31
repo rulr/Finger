@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Finger 数据表 接口
  * @author World
- * @version alpha 0.0.3
+ * @version alpha 0.0.4
  * @since JDK 1.7
  */
 public interface IFingerDataTable extends List<IFingerDataRow>,Serializable {
