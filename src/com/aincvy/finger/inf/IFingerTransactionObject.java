@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.inf;
+package com.aincvy.finger.inf;
 
 /**
  * 事务FingerObject 接口<p>

@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger;
+package com.aincvy.finger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

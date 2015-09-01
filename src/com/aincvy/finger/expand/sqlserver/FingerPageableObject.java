@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.expand.sqlserver;
+package com.aincvy.finger.expand.sqlserver;
 
 import com.aincvy.finger.FingerExpandObject;
 

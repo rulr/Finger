@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.expand.oracle;
+package com.aincvy.finger.expand.oracle;
 
 import com.aincvy.finger.FingerExpandObject;
 

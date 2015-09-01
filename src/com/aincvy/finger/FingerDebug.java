@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger;
+package com.aincvy.finger;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

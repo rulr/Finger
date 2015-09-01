@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.bridge;
+package com.aincvy.finger.bridge;
 
 import javax.annotation.Resource;
 
@@ -11,19 +11,21 @@ import com.aincvy.finger.FingerUtils;
  * Finger 的Spring 桥
  * @author World
  * @since JDK 1.7
- * @version alpha 0.0.2
+ * @version alpha 0.0.3
  */
 public class FingerSpringBridge {
 
 	static{
-		FingerBus.DEBUG = true;
-		FingerUtils.debug("Load FingerBus...");
 		try {
 			Class.forName("com.aincvy.finger.FingerBus");
+			FingerUtils.debug("Load FingerBus Over.");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	@Resource
+	private boolean debug = false;
 	
 	@Resource
 	private BasicDataSource basicDataSource = null;
@@ -40,6 +42,15 @@ public class FingerSpringBridge {
 		}else{
 			FingerBus.resetBasicDataSource(basicDataSource);
 		}
+	}
+
+	public void setDebug(boolean debug) {
+		this.debug = debug;
+		FingerBus.DEBUG = debug;
+	}
+
+	public boolean isDebug() {
+		return debug;
 	} 
 	
 }

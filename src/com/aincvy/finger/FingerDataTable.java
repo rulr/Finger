@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger;
+package com.aincvy.finger;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.cache;
+package com.aincvy.finger.cache;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;

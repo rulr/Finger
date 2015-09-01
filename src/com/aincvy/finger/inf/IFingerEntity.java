@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.inf;
+package com.aincvy.finger.inf;
 
 /**
  * Finger 实体 <p>

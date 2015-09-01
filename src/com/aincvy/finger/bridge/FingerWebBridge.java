@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.bridge;
+package com.aincvy.finger.bridge;
 
 /**
  * Finger 的WEB 桥

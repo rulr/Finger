@@ -17,6 +17,5 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/Finger/lib/commons-logging-1.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-commercial-5.1.25-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

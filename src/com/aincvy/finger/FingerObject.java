@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger;
+package com.aincvy.finger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,7 +21,7 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.1
+ * @version alpha 0.1.2
  * @since JDK 1.7
  */
 public abstract class FingerObject implements IFingerObject{
@@ -101,11 +101,22 @@ public abstract class FingerObject implements IFingerObject{
 						if (this.pk.equals(this.fields.get(i))) {
 							continue;
 						}
-					}else{
-						FingerUtils.debug("表" + this.table + "并没有设置主键，所以无法插入主键");
+					}
+//					else{
+//						FingerUtils.debug("表" + this.table + "并没有设置主键，所以无法插入主键");
+//					}
+				}
+				String fieldString = fields.get(i);
+				Method method = fcs.getGetMethod(fieldString);
+				if (method == null) {
+					method = fcs.getIsMethod(fieldString);
+					if (method == null) {
+						FingerUtils.debug(String.format("并不能获取到类%s的属性%s，因为该属性的getter并没有找到，这可能会产生一个错误", fcs.getCachedClass().getName(),fieldString));
+						continue;
 					}
 				}
-				param[i] = fcs.getGetMethod(this.fields.get(i)).invoke(entity);
+				
+				param[i] = method.invoke(entity);
 				qString.append("?,");
 				fieldList.append(this.dataFields.get(i) + ",");
 			}

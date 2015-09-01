@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.expand.mysql;
+package com.aincvy.finger.expand.mysql;
 
 import java.util.List;
 import java.util.Map;

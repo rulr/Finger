@@ -1,4 +1,4 @@
-﻿package com.aincvy.finger.inf;
+package com.aincvy.finger.inf;
 
 import java.sql.Connection;
 import java.util.List;
