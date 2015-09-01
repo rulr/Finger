@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.0
+ * @version alpha 0.1.1
  * @since JDK 1.7
  */
 public abstract class FingerObject implements IFingerObject{
@@ -42,11 +41,23 @@ public abstract class FingerObject implements IFingerObject{
 	 * 如果你的数据库字段名和 属性名不一样 ，可以使用  field => dataField 的方式赋值
 	 * field 表示类的属性名，  dataField 则表示数据库的字段名
 	 * @param str
-	 * @return
 	 */
-	public List<String> setFieldList(String str){
+	public void setFieldList(String str){
 		this.fields.clear();
 		this.dataFields.clear();
+		
+		parseRule(str, this.fields, this.dataFields);
+	}
+	
+
+	/**
+	 * 解释规则 
+	 * @param str 
+	 * @param fields 
+	 * @param dataFields 
+	 */
+	public void parseRule(String str,List<String> fields,List<String> dataFields) {
+		
 		String []array = str.split(",");
 		for (String string : array) {
 			if (string.contains("=>")) {
@@ -57,11 +68,10 @@ public abstract class FingerObject implements IFingerObject{
 					continue;
 				}
 			}
-			this.fields.add(string);
-			this.dataFields.add(string);
+			fields.add(string);
+			dataFields.add(string);
 		}
-		this.fields = Arrays.asList(str.split(","));
-		return this.fields;
+		//this.fields = Arrays.asList(str.split(","));
 	}
 
 	@Override
