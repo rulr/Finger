@@ -10,13 +10,21 @@ import com.aincvy.finger.inf.IFingerPageableObject;
  * 带有排序功能的 Finger对象 <p>
  * 针对于Mysql 进行实现
  * @author World
- * @version alpha 0.0.9
+ * @version alpha 0.1.0
  * @since JDK 1.7
  */
 public class FingerPageableObject extends FingerExpandObject implements IFingerPageableObject{
 
 	protected int pageSize = 10;
 	
+	private String table;
+	private String pk;
+	private String sql = null;
+	
+	public FingerPageableObject() {
+		
+	}
+
 	//SELECT bid FROM cigar_big_shots WHERE bid>'.$id.' ORDER BY bid ASC LIMIT 1'
 	@Override
 	public Object previousId(Object id) {
@@ -58,11 +66,7 @@ public class FingerPageableObject extends FingerExpandObject implements IFingerP
 
 	@Override
 	public <T> List<T> page(int pageNum, int pageSize) {
-		StringBuffer sqlBuilder = new StringBuffer();
-		sqlBuilder.append("SELECT * FROM `");
-		sqlBuilder.append(this.table);
-		sqlBuilder.append("` ORDER BY ");
-		sqlBuilder.append(this.pk);
+		StringBuffer sqlBuilder = new StringBuffer(this.sql);
 		sqlBuilder.append(" LIMIT ");
 		
 		int startIndex = 0;
@@ -97,6 +101,20 @@ public class FingerPageableObject extends FingerExpandObject implements IFingerP
 		return count / pageSize + 1;
 	}
 
+	@Override
+	public void setPageSql(String sql) {
+		this.sql = sql;
+	}
+
+	
+	@Override
+	public void setTableNameAndPrimaryKey(String tableName, String pk) {
+		super.setTableNameAndPrimaryKey(tableName, pk);
+		this.table = tableName;
+		this.pk = pk;
+		
+		sql = String.format("SELECT * FROM `%s` ORDER BY %s ", this.table,this.pk);
+	}
 	
 	
 	

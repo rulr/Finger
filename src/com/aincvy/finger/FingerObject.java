@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,22 +22,29 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.2
+ * @version alpha 0.1.4
  * @since JDK 1.7
  */
 public abstract class FingerObject implements IFingerObject{
 	
-	protected String table;
 	//类型的属性名
 	protected List<String> fields;
 	//数据库里的字段名
 	protected List<String> dataFields;
-	protected String pk;
+	
+	//部分私有属性
+	private String fetchSql = null;
+	//主键值
+	private String pk;
+	//表名
+	private String table;
 
 	protected FingerObject() {
 		fields = new ArrayList<>();
 		dataFields = new ArrayList<>();
 	}
+	
+	
 	/**
 	 * 如果你的数据库字段名和 属性名不一样 ，可以使用  field => dataField 的方式赋值
 	 * field 表示类的属性名，  dataField 则表示数据库的字段名
@@ -343,7 +351,7 @@ public abstract class FingerObject implements IFingerObject{
 
 	@Override
 	public <T> T fetch(Object id) {
-		String sql = String.format("SELECT * FROM `%s` WHERE `%s`=?", this.table,this.pk);
+		String sql = String.format("%s WHERE `%s`=?", this.fetchSql,this.table,this.pk);
 		List<Map<String, Object>> list = query(sql,id);
 		if (list.size() <= 0) {
 			return null;
@@ -376,17 +384,14 @@ public abstract class FingerObject implements IFingerObject{
 
 	@Override
 	public <T> List<T> fetchTable() {
-		return executeQuery(String.format("SELECT * FROM `%s`", this.table));
+		return executeQuery(fetchSql);
 	}
 	
 	
 
 	@Override
 	public <T> T fetchFirst(String condition, Object... params) {
-		StringBuilder sqlBuilder = new StringBuilder();
-		sqlBuilder.append("SELECT * FROM `");
-		sqlBuilder.append(this.table);
-		sqlBuilder.append("`");
+		StringBuilder sqlBuilder = new StringBuilder(fetchSql);
 		if (condition != null) {
 			sqlBuilder.append(" WHERE ");
 			sqlBuilder.append(condition);
@@ -421,6 +426,11 @@ public abstract class FingerObject implements IFingerObject{
 						FingerUtils.debug(String.format("并没有设置类 %s 的属性%s为：  %s，因为并没有找到相应的setter", claxx.getName(),t.getKey(),t.getValue()));
 						continue;
 					}
+					// 数据库中的时间格式
+					if (t.getValue() instanceof Timestamp) {
+						method.invoke(entity, t.getValue().toString());
+						continue;
+					}
 					method.invoke(entity, t.getValue());
 				}
 				ret.add( entity);
@@ -444,6 +454,29 @@ public abstract class FingerObject implements IFingerObject{
 			return 0;
 		}
 		return new Integer(String.valueOf(list.get(0).get("count")));
+	}
+	@Override
+	public void setFetchSql(String sql) {
+		this.fetchSql = sql;
+	}
+
+
+	@Override
+	public void setTableNameAndPrimaryKey(String tableName, String pk) {
+		setTableNameAndPrimaryKey(tableName, pk, this.fetchSql == null);
+	}
+
+
+	@Override
+	public void setTableNameAndPrimaryKey(String tableName, String pk,
+			boolean rewriteFetchSql) {
+		
+		this.table = tableName;
+		this.pk = pk;
+		
+		if (rewriteFetchSql) {
+			this.fetchSql = String.format("SELECT * FROM `%s`", this.table);
+		}
 	}
 	
 	

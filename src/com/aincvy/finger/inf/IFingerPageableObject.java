@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 具有排序能力的Finger对象 <p>
  * @author World
- * @version alpha 0.0.4
+ * @version alpha 0.0.5
  * @since JDK 1.7
  */
 public interface IFingerPageableObject {
@@ -58,5 +58,11 @@ public interface IFingerPageableObject {
 	 * @return
 	 */
 	public int totalPageNum(int pageSize);
+	
+	/**
+	 * 设置查询的sql语句
+	 * @param sql 
+	 */
+	public void setPageSql(String sql);
 	
 }
