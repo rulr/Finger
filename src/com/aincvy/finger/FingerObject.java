@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.7
+ * @version alpha 0.1.8
  * @since JDK 1.7
  */
 public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
@@ -104,15 +105,21 @@ public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 	
 	@Override
 	public int insert(Connection con, T entity, boolean insertPK) {
-		Object []param = new Object[this.fields.size()];
+		int size = this.fields.size();
+		if (!insertPK) {
+			size--;
+		}
+		Object []param = new Object[size];
 		StringBuffer qString = new StringBuffer();
 		StringBuffer fieldList = new StringBuffer();
 		FingerCacheClass fcs = FingerCache.getCacheClass(entity.getClass());
 		try {
+			int tmp = 0;
 			for (int i = 0; i < this.fields.size(); i++) {
 				if (!insertPK) {
 					if (this.pk != null) {
 						if (this.pk.equals(this.fields.get(i))) {
+							tmp++;
 							continue;
 						}
 					}
@@ -127,7 +134,7 @@ public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 					}
 				}
 				
-				param[i] = method.invoke(entity);
+				param[i-tmp] = method.invoke(entity);
 				qString.append("?,");
 				fieldList.append(this.dataFields.get(i) + ",");
 			}
@@ -147,6 +154,8 @@ public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 			fieldList.setLength(fieldList.length() -1 );
 		}
 		String sql = String.format("INSERT INTO `%s`(%s) VALUES(%s)", this.table, fieldList,qString);
+		System.out.println(sql);
+		System.out.println(Arrays.toString(param));
 		return queryUpdate(con,sql, param);
 	}
 

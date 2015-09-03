@@ -21,7 +21,7 @@ import com.aincvy.finger.inf.IFingerExpandObject;
 /**
  * 可拓展 FingerObject
  * @author World
- * @version alpha 0.0.8
+ * @version alpha 0.0.9
  * @since JDK 1.7
  *
  */
@@ -97,7 +97,12 @@ public class FingerExpandObject<T extends IFingerEntity> extends FingerBatchObje
 			Object... params) {
 		List<String> fields = new ArrayList<>();
 		List<String> dataFields = new ArrayList<>();
-		parseRule(rule, fields, dataFields);
+		if (rule != null) {
+			parseRule(rule, fields, dataFields);
+		}else{
+			fields = this.fields;
+			dataFields = this.dataFields;
+		}
 		
 		Connection con = FingerBus.newConnection();
 		PreparedStatement pstat = null;
@@ -168,7 +173,13 @@ public class FingerExpandObject<T extends IFingerEntity> extends FingerBatchObje
 	public int exInsert(String rule, T entity, int returnBack) {
 		List<String> fields = new ArrayList<>();
 		List<String> dataFields = new ArrayList<>();
-		parseRule(rule, fields, dataFields);
+		if (rule != null) {
+			parseRule(rule, fields, dataFields);
+		}else{
+			fields = this.fields;
+			dataFields = this.dataFields;
+		}
+		
 		
 		Connection con = FingerBus.newConnection();
 		PreparedStatement pstat = null;
@@ -255,6 +266,10 @@ public class FingerExpandObject<T extends IFingerEntity> extends FingerBatchObje
 
 	@Override
 	public int exTransactionUpdate(int tid, T entity, String rule) {
+		if (rule == null) {
+			throw new FingerRuntimeException("规则说明不能为null,如果不想使用规则说明，请使用transactionUpdate 方法 ");
+		}
+		
 		List<String> fields = new ArrayList<>();
 		List<String> dataFields = new ArrayList<>();
 		parseRule(rule, fields, dataFields);
