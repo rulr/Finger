@@ -6,9 +6,9 @@ import java.util.List;
  * Finger 扩展Object ，主攻查询操作
  * @author World
  * @since JDK 1.7
- * @version alpha 0.0.4
+ * @version alpha 0.0.5
  */
-public interface IFingerExpandObject {
+public interface IFingerExpandObject<T extends IFingerEntity> {
 
 	/**
 	 * 拓展性方法， 执行一个查询语句
@@ -28,7 +28,7 @@ public interface IFingerExpandObject {
 	 * @param params 参数列表
 	 * @return
 	 */
-	public <T> List<T> exQuery(Class<T> claxx, String rule,String sql,Object ...params);
+	public List<T> exQuery(Class<T> claxx, String rule,String sql,Object ...params);
 	
 	/**
 	 * 拓展性方法， 如果你认为本方法过于难用，可以采用直接写Sql语句的形式来使用别的方法 <br/>
@@ -39,7 +39,7 @@ public interface IFingerExpandObject {
 	 * @param returnBack  具体使用的值 请看 FingerBus,如果给定的值不正确，则返回受影响的行数
 	 * @return
 	 */
-	public int exInsert(String rule,IFingerEntity entity,int returnBack);
+	public int exInsert(String rule,T entity,int returnBack);
 	
 	
 
@@ -51,6 +51,6 @@ public interface IFingerExpandObject {
 	 * 不一致的话，则应使用：  field1 => col1,field2 => col2,field3 => col3 的方式
 	 * @return
 	 */
-	public int exTransactionUpdate(int tid,IFingerEntity entity,String rule);
+	public int exTransactionUpdate(int tid,T entity,String rule);
 	
 }

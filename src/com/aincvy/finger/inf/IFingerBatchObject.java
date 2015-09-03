@@ -5,17 +5,17 @@ import java.util.List;
 /**
  * 批处理Finger 对象 接口<p>
  * @author World
- * @version alpha 0.0.1
+ * @version alpha 0.0.2
  * @since JDK 1.7
  */
-public interface IFingerBatchObject{
+public interface IFingerBatchObject<T extends IFingerEntity>{
 
 	/**
 	 * 批插入
 	 * @param entities
 	 * @return
 	 */
-	public int batchInsert(List<? extends IFingerEntity> entities);
+	public int batchInsert(List<T> entities);
 	
 	/**
 	 * 批删除
@@ -29,14 +29,14 @@ public interface IFingerBatchObject{
 	 * @param entities
 	 * @return
 	 */
-	public int batchUpdate(List<? extends IFingerEntity> entities);
+	public int batchUpdate(List<T> entities);
 	
 	/**
 	 * 批插入
 	 * @param entities
 	 * @return
 	 */
-	public int batchInsert(IFingerEntity []entities);
+	public int batchInsert(T []entities);
 	
 	/**
 	 * 批删除
@@ -50,7 +50,7 @@ public interface IFingerBatchObject{
 	 * @param entities
 	 * @return
 	 */
-	public int batchUpdate(IFingerEntity []entities);
+	public int batchUpdate(T []entities);
 	
 	
 }

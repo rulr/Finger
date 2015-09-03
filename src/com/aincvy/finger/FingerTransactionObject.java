@@ -12,10 +12,10 @@ import com.aincvy.finger.inf.IFingerTransactionObject;
 /**
  * 具有事务能力的FingerObject <p>
  * @author World
- * @version alpha 0.0.3
+ * @version alpha 0.0.4
  * @since JDK 1.7
  */
-public class FingerTransactionObject extends FingerObject implements IFingerTransactionObject{
+public class FingerTransactionObject<T extends IFingerEntity> extends FingerObject<T> implements IFingerTransactionObject<T>{
 
 	private Map<Integer, Connection> connectionMap = null;
 	private int lastId = 0;
@@ -79,12 +79,12 @@ public class FingerTransactionObject extends FingerObject implements IFingerTran
 	}
 	
 	@Override
-	public int transactionInsert(int tid, IFingerEntity entity) {
+	public int transactionInsert(int tid, T entity) {
 		return insert(getConnection(tid), entity);
 	}
 
 	@Override
-	public int transactionUpdate(int tid, IFingerEntity entity) {
+	public int transactionUpdate(int tid, T entity) {
 		return update(getConnection(tid), pkValue(entity), entity,false);
 	}
 

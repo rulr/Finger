@@ -4,9 +4,9 @@ package com.aincvy.finger.inf;
  * 事务FingerObject 接口<p>
  * @author World
  * @since JDK 1.7
- * @version alpha 0.0.2
+ * @version alpha 0.0.3
  */
-public interface IFingerTransactionObject {
+public interface IFingerTransactionObject<T extends IFingerEntity> {
 
 	/**
 	 * 开始事务
@@ -32,7 +32,7 @@ public interface IFingerTransactionObject {
 	 * @param entity
 	 * @return
 	 */
-	public int transactionInsert(int tid,IFingerEntity entity);
+	public int transactionInsert(int tid,T entity);
 	
 	/**
 	 * 事务更新
@@ -40,7 +40,7 @@ public interface IFingerTransactionObject {
 	 * @param entity
 	 * @return
 	 */
-	public int transactionUpdate(int tid,IFingerEntity entity);
+	public int transactionUpdate(int tid,T entity);
 	
 	/**
 	 * 事务删除

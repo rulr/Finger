@@ -20,11 +20,11 @@ import com.aincvy.finger.inf.IFingerExpandObject;
 /**
  * 可拓展 FingerObject
  * @author World
- * @version alpha 0.0.5
+ * @version alpha 0.0.6
  * @since JDK 1.7
  *
  */
-public class FingerExpandObject extends FingerBatchObject implements IFingerExpandObject{
+public class FingerExpandObject<T extends IFingerEntity> extends FingerBatchObject<T> implements IFingerExpandObject<T>{
 
 	@Override
 	public IFingerDataTable exQuery(String sql, Object... params) {
@@ -90,7 +90,7 @@ public class FingerExpandObject extends FingerBatchObject implements IFingerExpa
 	}
 
 	@Override
-	public <T> List<T> exQuery(Class<T> claxx, String rule, String sql,
+	public List<T> exQuery(Class<T> claxx, String rule, String sql,
 			Object... params) {
 		List<String> fields = new ArrayList<>();
 		List<String> dataFields = new ArrayList<>();
@@ -161,13 +161,13 @@ public class FingerExpandObject extends FingerBatchObject implements IFingerExpa
 	}
 
 	@Override
-	public int exInsert(String rule, IFingerEntity entity, int returnBack) {
+	public int exInsert(String rule, T entity, int returnBack) {
 		
 		return 0;
 	}
 
 	@Override
-	public int exTransactionUpdate(int tid, IFingerEntity entity, String rule) {
+	public int exTransactionUpdate(int tid, T entity, String rule) {
 		
 		return 0;
 	}

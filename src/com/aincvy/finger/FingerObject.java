@@ -22,10 +22,10 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.4
+ * @version alpha 0.1.5
  * @since JDK 1.7
  */
-public abstract class FingerObject implements IFingerObject{
+public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 	
 	//类型的属性名
 	protected List<String> fields;
@@ -83,21 +83,21 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	@Override
-	public int insert(IFingerEntity entity) {
+	public int insert(T entity) {
 		return insert(FingerBus.newConnection(), entity);
 	}
 	
 	@Override
-	public int insert(IFingerEntity entity, boolean insertPK) {
+	public int insert(T entity, boolean insertPK) {
 		return insert(FingerBus.newConnection(), entity, insertPK);
 	}
 	
-	public int insert(Connection con,IFingerEntity entity) {
+	public int insert(Connection con,T entity) {
 		return insert(con, entity, false);
 	}
 	
 	@Override
-	public int insert(Connection con, IFingerEntity entity, boolean insertPK) {
+	public int insert(Connection con, T entity, boolean insertPK) {
 		Object []param = new Object[this.fields.size()];
 		StringBuffer qString = new StringBuffer();
 		StringBuffer fieldList = new StringBuffer();
@@ -148,17 +148,17 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	@Override
-	public int update(Object id, IFingerEntity entity) {
+	public int update(Object id, T entity) {
 		return update(FingerBus.newConnection(), id, entity,true);
 	}
 	
 	@Override
-	public int update(IFingerEntity entity) {
+	public int update(T entity) {
 		return update(pkValue(entity), entity);
 	}
 	
 	@Override
-	public int update(Connection con, Object id, IFingerEntity entity, boolean flag) {
+	public int update(Connection con, Object id, T entity, boolean flag) {
 		StringBuffer sqlBuffer = new StringBuffer("UPDATE `" + this.table + "` SET ");
 		Object[] param = new Object[this.fields.size() + 1];
 		FingerCacheClass fcs = FingerCache.getCacheClass(entity.getClass());
@@ -206,7 +206,7 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	@Override
-	public <T> T fetchFirst() {
+	public T fetchFirst() {
 		return fetchFirst(null);
 	}
 
@@ -329,8 +329,8 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	
-	protected Object pkValue(IFingerEntity entity) {
-		Class<? extends IFingerEntity> claxx = entity.getClass();
+	protected Object pkValue(T entity) {
+		Class<?> claxx = entity.getClass();
 		try {
 			return FingerCache.getCacheClass(claxx).getGetMethod(this.pk).invoke(entity);
 		} catch (SecurityException e) {
@@ -350,7 +350,7 @@ public abstract class FingerObject implements IFingerObject{
 	
 
 	@Override
-	public <T> T fetch(Object id) {
+	public T fetch(Object id) {
 		String sql = String.format("%s WHERE `%s`=?", this.fetchSql,this.table,this.pk);
 		List<Map<String, Object>> list = query(sql,id);
 		if (list.size() <= 0) {
@@ -383,14 +383,14 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	@Override
-	public <T> List<T> fetchTable() {
+	public List<T> fetchTable() {
 		return executeQuery(fetchSql);
 	}
 	
 	
 
 	@Override
-	public <T> T fetchFirst(String condition, Object... params) {
+	public T fetchFirst(String condition, Object... params) {
 		StringBuilder sqlBuilder = new StringBuilder(fetchSql);
 		if (condition != null) {
 			sqlBuilder.append(" WHERE ");
@@ -406,7 +406,7 @@ public abstract class FingerObject implements IFingerObject{
 	}
 
 	@Override
-	public <T> List<T> executeQuery(String sql,Object... param) {
+	public List<T> executeQuery(String sql,Object... param) {
 		FingerUtils.debug("Exec Sql: " + sql);
 		List<Map<String, Object>> list = query(sql,param);
 		if (list.size() <= 0) {

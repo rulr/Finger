@@ -6,17 +6,17 @@ import java.util.List;
 /**
  * Finger 对象接口
  * @author World
- * @version alpha 0.1.2
+ * @version alpha 0.1.3
  * @since JDK 1.7
  */
-public interface IFingerObject {
+public interface IFingerObject<T extends IFingerEntity> {
 
 	/**
 	 * 插入实体类，使用一个新的数据库连接
 	 * @param entity
 	 * @return
 	 */
-	public int insert(IFingerEntity entity);
+	public int insert(T entity);
 	
 	/**
 	 * 插入实体类，使用一个新的数据库连接
@@ -24,7 +24,7 @@ public interface IFingerObject {
 	 * @param insertPK 是否插入主键
 	 * @return
 	 */
-	public int insert(IFingerEntity entity,boolean insertPK);
+	public int insert(T entity,boolean insertPK);
 	
 	/**
 	 * 插入实体类，使用给定的数据库连接
@@ -32,7 +32,7 @@ public interface IFingerObject {
 	 * @param entity
 	 * @return
 	 */
-	public int insert(Connection con,IFingerEntity entity);
+	public int insert(Connection con,T entity);
 	
 	/**
 	 * 插入实体类，使用给定的数据库连接 ，并决定是否插入主键信息
@@ -41,7 +41,7 @@ public interface IFingerObject {
 	 * @param insertPK true:插入主键， false: 不插入主键
 	 * @return
 	 */
-	public int insert(Connection con,IFingerEntity entity,boolean insertPK);
+	public int insert(Connection con,T entity,boolean insertPK);
 	
 	/**
 	 * 更新实体，使用新的数据库连接
@@ -49,7 +49,7 @@ public interface IFingerObject {
 	 * @param entity
 	 * @return
 	 */
-	public int update(Object id,IFingerEntity entity);
+	public int update(Object id,T entity);
 	
 
 	/**
@@ -60,7 +60,7 @@ public interface IFingerObject {
 	 * @param flag 执行更新操作之后是否关闭链接  true:是，　false:否
 	 * @return
 	 */
-	public int update(Connection con,Object id,IFingerEntity entity,boolean flag);
+	public int update(Connection con,Object id,T entity,boolean flag);
 	
 	
 	/**
@@ -68,7 +68,7 @@ public interface IFingerObject {
 	 * @param entity
 	 * @return
 	 */
-	public int update(IFingerEntity entity);
+	public int update(T entity);
 	
 	/**
 	 * 删除某一条记录
@@ -95,7 +95,7 @@ public interface IFingerObject {
 	 * 查询本表中的第一条记录
 	 * @return
 	 */
-	public <T> T fetchFirst();
+	public T fetchFirst();
 	
 	/**
 	 * 查询本表中的第一条记录
@@ -103,27 +103,27 @@ public interface IFingerObject {
 	 * @param params 参数
 	 * @return
 	 */
-	public <T> T fetchFirst(String condition,Object ...params);
+	public T fetchFirst(String condition,Object ...params);
 	
 	/**
 	 * 根据主键 查找记录， 注：  不适合组合主键
 	 * @param id 主键值
 	 * @return
 	 */
-	public <T> T fetch(Object id);
+	public T fetch(Object id);
 	
 	/**
 	 * 获取表内的所有数据
 	 * @return
 	 */
-	public <T> List<T> fetchTable();
+	public List<T> fetchTable();
 	
 	/**
 	 * 执行查询操作
 	 * @param sql
 	 * @return
 	 */
-	public <T> List<T> executeQuery(String sql,Object ...param);
+	public List<T> executeQuery(String sql,Object ...param);
 	
 	
 	/**

@@ -9,15 +9,15 @@ import com.aincvy.finger.inf.IFingerEntity;
 /**
  * 批处理 Finger 对象  <p>
  * @author World
- * @version alpha 0.0.2
+ * @version alpha 0.0.3
  * @since JDK 1.7
  */
-public class FingerBatchObject extends FingerTransactionObject implements IFingerBatchObject{
+public class FingerBatchObject<T extends IFingerEntity> extends FingerTransactionObject<T> implements IFingerBatchObject<T>{
 
 	@Override
-	public int batchInsert(List<? extends IFingerEntity> entities) {
+	public int batchInsert(List<T> entities) {
 		int ret = 0;
-		for (IFingerEntity entity : entities) {
+		for (T entity : entities) {
 			ret += insert(entity);
 		}
 		return ret;
@@ -33,16 +33,16 @@ public class FingerBatchObject extends FingerTransactionObject implements IFinge
 	}
 
 	@Override
-	public int batchUpdate(List<? extends IFingerEntity> entities) {
+	public int batchUpdate(List<T> entities) {
 		int ret =  0;
-		for (IFingerEntity entity : entities) {
+		for (T entity : entities) {
 			ret += update(entity);
 		}
 		return ret;
 	}
 
 	@Override
-	public int batchInsert(IFingerEntity[] entities) {
+	public int batchInsert(T[] entities) {
 		return batchInsert(Arrays.asList(entities));
 	}
 
@@ -52,7 +52,7 @@ public class FingerBatchObject extends FingerTransactionObject implements IFinge
 	}
 
 	@Override
-	public int batchUpdate(IFingerEntity[] entities) {
+	public int batchUpdate(T[] entities) {
 		return batchUpdate(Arrays.asList(entities));
 	}
 

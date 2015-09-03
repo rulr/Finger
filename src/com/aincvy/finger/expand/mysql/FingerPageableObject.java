@@ -4,16 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import com.aincvy.finger.FingerExpandObject;
+import com.aincvy.finger.inf.IFingerEntity;
 import com.aincvy.finger.inf.IFingerPageableObject;
 
 /**
  * 带有排序功能的 Finger对象 <p>
  * 针对于Mysql 进行实现
  * @author World
- * @version alpha 0.1.0
+ * @version alpha 0.1.1
  * @since JDK 1.7
  */
-public class FingerPageableObject extends FingerExpandObject implements IFingerPageableObject{
+public class FingerPageableObject<T extends IFingerEntity> extends FingerExpandObject<T> implements IFingerPageableObject<T>{
 
 	protected int pageSize = 10;
 	
@@ -65,7 +66,7 @@ public class FingerPageableObject extends FingerExpandObject implements IFingerP
 	}
 
 	@Override
-	public <T> List<T> page(int pageNum, int pageSize) {
+	public List<T> page(int pageNum, int pageSize) {
 		StringBuffer sqlBuilder = new StringBuffer(this.sql);
 		sqlBuilder.append(" LIMIT ");
 		
@@ -88,7 +89,7 @@ public class FingerPageableObject extends FingerExpandObject implements IFingerP
 	}
 
 	@Override
-	public <T> List<T> page(int pageNum) {
+	public List<T> page(int pageNum) {
 		return page(pageNum, this.pageSize);
 	}
 

@@ -5,10 +5,10 @@ import java.util.List;
 /**
  * 具有排序能力的Finger对象 <p>
  * @author World
- * @version alpha 0.0.5
+ * @version alpha 0.0.6
  * @since JDK 1.7
  */
-public interface IFingerPageableObject {
+public interface IFingerPageableObject<T extends IFingerEntity> {
 
 	/**
 	 * 获取给定参数的 上一个id值 <p>
@@ -36,14 +36,14 @@ public interface IFingerPageableObject {
 	 * @param pageSize
 	 * @return
 	 */
-	public <T> List<T> page(int pageNum,int pageSize);
+	public List<T> page(int pageNum,int pageSize);
 	
 	/**
 	 * 获取指定页的内容 <p>
 	 * @param pageNum  页码，应从1开始计算， 0和1具有相同的效果
 	 * @return
 	 */
-	public <T> List<T> page(int pageNum);
+	public List<T> page(int pageNum);
 	
 	
 	/**

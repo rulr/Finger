@@ -17,7 +17,7 @@ import com.aincvy.finger.inf.IFingerObject;
 /**
  * Finger 控制总线 <p>
  * @author World
- * @version alpha 0.0.6
+ * @version alpha 0.0.7
  * @since JDK 1.7
  */
 public final class FingerBus {
@@ -40,7 +40,8 @@ public final class FingerBus {
 	private static boolean _INITED = false;
 	
 	private static BasicDataSource basicDataSource = null;
-	private static Map<Class<?>, Class<?>> classMap = null;
+	//类的Map , Key为实体类， Value为Dao类
+	private static Map<Class<? extends IFingerEntity>, Class<? extends IFingerObject<? extends IFingerEntity>>> classMap = null;
 	
 	
 	/**
@@ -65,7 +66,7 @@ public final class FingerBus {
 		}
 		_INITED = true;
 		
-		classMap =  Collections.synchronizedMap(new HashMap<Class<?>, Class<?>>());
+		classMap =  Collections.synchronizedMap(new HashMap<Class<? extends IFingerEntity>, Class<? extends IFingerObject<? extends IFingerEntity>>>());
 		resetBasicDataSource(das);
 	}
 	
@@ -98,7 +99,7 @@ public final class FingerBus {
 	}
 	
 	
-	public static boolean registerObject(Class<? extends IFingerEntity> entityClass,Class<? extends IFingerObject> objectClass ) {
+	public static <T extends IFingerEntity> boolean registerObject(Class<T> entityClass,Class<? extends IFingerObject<T>> objectClass ) {
 		checkInit();
 		if (classMap.containsKey(entityClass) || classMap.containsValue(objectClass)) {
 			throw new FingerRuntimeException("实体类或者DAO类已经注册过了");
@@ -120,8 +121,8 @@ public final class FingerBus {
 		return classMap.get(claxx);
 	}
 	
-	public static Class<?> getEntityClass(Class<? extends IFingerObject> claxx) {
-		for (Entry<Class<?>, Class<?>> item : classMap.entrySet()) {
+	public static Class<?> getEntityClass(Class<?> claxx) {
+		for (Entry<Class<? extends IFingerEntity>, Class<? extends IFingerObject<? extends IFingerEntity>>> item : classMap.entrySet()) {
 			if (item.getValue().equals(claxx)) {
 				return item.getKey();
 			}
@@ -150,16 +151,17 @@ public final class FingerBus {
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static <T> T getDaoObject(String classPath) {
 		try {
-			return getDaoObject(Class.forName(classPath));
+			return (T) getDaoObject(Class.forName(classPath));
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	public static <T> T getDaoObject(Class<?> claxx) {
+	public static <T> T getDaoObject(Class<T> claxx) {
 		FingerCacheClass fcs = FingerCache.getCacheClass(claxx);
 		if (fcs == null) {
 			throw new FingerRuntimeException("未能在缓存中找到该类型，请检查");
