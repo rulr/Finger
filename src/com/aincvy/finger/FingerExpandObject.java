@@ -21,11 +21,11 @@ import com.aincvy.finger.inf.IFingerExpandObject;
 /**
  * 可拓展 FingerObject
  * @author World
- * @version alpha 0.0.9
+ * @version alpha 0.1.0
  * @since JDK 1.7
  *
  */
-public class FingerExpandObject<T extends IFingerEntity> extends FingerBatchObject<T> implements IFingerExpandObject<T>{
+public abstract class FingerExpandObject<T extends IFingerEntity> extends FingerBatchObject<T> implements IFingerExpandObject<T>{
 
 	// 规则使用
 	

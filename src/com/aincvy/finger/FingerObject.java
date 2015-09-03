@@ -23,10 +23,10 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.8
+ * @version alpha 0.1.9
  * @since JDK 1.7
  */
-public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
+public abstract class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 	
 	//类型的属性名
 	protected List<String> fields;

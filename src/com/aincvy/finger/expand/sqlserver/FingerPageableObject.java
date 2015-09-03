@@ -11,10 +11,10 @@ import com.aincvy.finger.inf.IFingerPageableObject;
  * 带有排序功能的 <p>
  * 针对于SqlServer 进行实现
  * @author World
- * @version alpha 0.0.3
+ * @version alpha 0.0.4
  * @since JDK 1.7
  */
-public class FingerPageableObject<T extends IFingerEntity> extends FingerExpandObject<T> implements IFingerPageableObject<T>{
+public abstract class FingerPageableObject<T extends IFingerEntity> extends FingerExpandObject<T> implements IFingerPageableObject<T>{
 
 	@Override
 	public Object previousId(Object id) {

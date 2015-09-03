@@ -11,10 +11,10 @@ import com.aincvy.finger.inf.IFingerPageableObject;
  * 带有排序功能的 Finger对象 <p>
  * 针对于Mysql 进行实现
  * @author World
- * @version alpha 0.1.2
+ * @version alpha 0.1.3
  * @since JDK 1.7
  */
-public class FingerPageableObject<T extends IFingerEntity> extends FingerExpandObject<T> implements IFingerPageableObject<T>{
+public abstract class FingerPageableObject<T extends IFingerEntity> extends FingerExpandObject<T> implements IFingerPageableObject<T>{
 
 	protected int pageSize = 10;
 	

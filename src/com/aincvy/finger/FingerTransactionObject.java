@@ -12,10 +12,10 @@ import com.aincvy.finger.inf.IFingerTransactionObject;
 /**
  * 具有事务能力的FingerObject <p>
  * @author World
- * @version alpha 0.0.5
+ * @version alpha 0.0.6
  * @since JDK 1.7
  */
-public class FingerTransactionObject<T extends IFingerEntity> extends FingerObject<T> implements IFingerTransactionObject<T>{
+public abstract class FingerTransactionObject<T extends IFingerEntity> extends FingerObject<T> implements IFingerTransactionObject<T>{
 
 	private Map<Integer, Connection> connectionMap = null;
 	private int lastId = 0;

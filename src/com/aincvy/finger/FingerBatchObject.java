@@ -9,10 +9,10 @@ import com.aincvy.finger.inf.IFingerEntity;
 /**
  * 批处理 Finger 对象  <p>
  * @author World
- * @version alpha 0.0.3
+ * @version alpha 0.0.4
  * @since JDK 1.7
  */
-public class FingerBatchObject<T extends IFingerEntity> extends FingerTransactionObject<T> implements IFingerBatchObject<T>{
+public abstract class FingerBatchObject<T extends IFingerEntity> extends FingerTransactionObject<T> implements IFingerBatchObject<T>{
 
 	@Override
 	public int batchInsert(List<T> entities) {
