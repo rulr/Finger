@@ -22,7 +22,7 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.5
+ * @version alpha 0.1.6
  * @since JDK 1.7
  */
 public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
@@ -351,7 +351,7 @@ public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 
 	@Override
 	public T fetch(Object id) {
-		String sql = String.format("%s WHERE `%s`=?", this.fetchSql,this.table,this.pk);
+		String sql = String.format("%s WHERE `%s`=?", this.fetchSql,this.pk);
 		List<Map<String, Object>> list = query(sql,id);
 		if (list.size() <= 0) {
 			return null;
