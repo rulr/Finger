@@ -12,7 +12,7 @@ import com.aincvy.finger.inf.IFingerTransactionObject;
 /**
  * 具有事务能力的FingerObject <p>
  * @author World
- * @version alpha 0.0.4
+ * @version alpha 0.0.5
  * @since JDK 1.7
  */
 public class FingerTransactionObject<T extends IFingerEntity> extends FingerObject<T> implements IFingerTransactionObject<T>{
@@ -71,7 +71,12 @@ public class FingerTransactionObject<T extends IFingerEntity> extends FingerObje
 		}
 	}
 
-	private Connection getConnection(int tid) {
+	/**
+	 * 根据事务id 获取数据库连接
+	 * @param tid 事务id
+	 * @return
+	 */
+	protected Connection getConnection(int tid) {
 		if (!connectionMap.containsKey(tid)) {
 			throw new FingerRuntimeException("给定的事务id有误，请检查");
 		}

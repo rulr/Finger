@@ -11,16 +11,17 @@ import com.aincvy.finger.inf.IFingerPageableObject;
  * 带有排序功能的 Finger对象 <p>
  * 针对于Mysql 进行实现
  * @author World
- * @version alpha 0.1.1
+ * @version alpha 0.1.2
  * @since JDK 1.7
  */
 public class FingerPageableObject<T extends IFingerEntity> extends FingerExpandObject<T> implements IFingerPageableObject<T>{
 
 	protected int pageSize = 10;
 	
-	private String table;
-	private String pk;
-	private String sql = null;
+	/**
+	 * 排序使用的sql语句
+	 */
+	protected String pageSql = null;
 	
 	public FingerPageableObject() {
 		
@@ -67,7 +68,7 @@ public class FingerPageableObject<T extends IFingerEntity> extends FingerExpandO
 
 	@Override
 	public List<T> page(int pageNum, int pageSize) {
-		StringBuffer sqlBuilder = new StringBuffer(this.sql);
+		StringBuffer sqlBuilder = new StringBuffer(this.pageSql);
 		sqlBuilder.append(" LIMIT ");
 		
 		int startIndex = 0;
@@ -104,17 +105,15 @@ public class FingerPageableObject<T extends IFingerEntity> extends FingerExpandO
 
 	@Override
 	public void setPageSql(String sql) {
-		this.sql = sql;
+		this.pageSql = sql;
 	}
 
 	
 	@Override
 	public void setTableNameAndPrimaryKey(String tableName, String pk) {
 		super.setTableNameAndPrimaryKey(tableName, pk);
-		this.table = tableName;
-		this.pk = pk;
 		
-		sql = String.format("SELECT * FROM `%s` ORDER BY %s ", this.table,this.pk);
+		pageSql = String.format("SELECT * FROM `%s` ORDER BY %s ", this.table,this.pk);
 	}
 	
 	

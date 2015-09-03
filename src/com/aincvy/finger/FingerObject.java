@@ -22,7 +22,7 @@ import com.aincvy.finger.inf.IFingerObject;
  * Finger对象   <p>
  * 使用Finger的DAO对象都应该继承自本类 <p>
  * @author World
- * @version alpha 0.1.6
+ * @version alpha 0.1.7
  * @since JDK 1.7
  */
 public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
@@ -34,10 +34,16 @@ public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 	
 	//部分私有属性
 	private String fetchSql = null;
-	//主键值
-	private String pk;
-	//表名
-	private String table;
+	/**
+	 * 表的主键值，暂不支持联合主键 <br />
+	 * 请使用方法 setTableNameAndPrimaryKey()  来设置表名和主键
+	 */
+	protected String pk;
+	/**
+	 * 表名  <br/>
+	 * 请使用方法 setTableNameAndPrimaryKey()  来设置表名和主键
+	 */
+	protected String table;
 
 	protected FingerObject() {
 		fields = new ArrayList<>();
@@ -104,15 +110,12 @@ public class FingerObject<T extends IFingerEntity> implements IFingerObject<T>{
 		FingerCacheClass fcs = FingerCache.getCacheClass(entity.getClass());
 		try {
 			for (int i = 0; i < this.fields.size(); i++) {
-				if (insertPK) {
+				if (!insertPK) {
 					if (this.pk != null) {
 						if (this.pk.equals(this.fields.get(i))) {
 							continue;
 						}
 					}
-//					else{
-//						FingerUtils.debug("表" + this.table + "并没有设置主键，所以无法插入主键");
-//					}
 				}
 				String fieldString = fields.get(i);
 				Method method = fcs.getGetMethod(fieldString);

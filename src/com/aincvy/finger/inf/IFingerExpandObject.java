@@ -6,7 +6,7 @@ import java.util.List;
  * Finger 扩展Object ，主攻查询操作
  * @author World
  * @since JDK 1.7
- * @version alpha 0.0.5
+ * @version alpha 0.0.6
  */
 public interface IFingerExpandObject<T extends IFingerEntity> {
 
@@ -44,9 +44,9 @@ public interface IFingerExpandObject<T extends IFingerEntity> {
 	
 
 	/**
-	 * 带规则的 事务更新
-	 * @param tid
-	 * @param entity
+	 * 带规则的 事务更新 ,返回受影响的行数
+	 * @param tid 如果不想使用事务，请写-1
+	 * @param entity 要更新的实体
 	 * @param rule  规则表示  如果数据库字段和类的属性名一样的话则用逗号分隔每个字段名 例如：  col1,col2,col3... <br/>
 	 * 不一致的话，则应使用：  field1 => col1,field2 => col2,field3 => col3 的方式
 	 * @return
