@@ -6,4 +6,4 @@ Finger的适用人员为： 个人开发者，中小型网站应用的开发
 使用Finger的一个简单小例子：http://www.aincvy.com/public/zips/MyWeb.zip     
 如果你碰到了任何bug， 或者使用上的困难，可以发送电子邮件到 world@aincvy.com    
 
-本软件遵循GPL协议。    
+本软件遵循LGPL协议。    

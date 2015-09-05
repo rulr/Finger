@@ -17,7 +17,7 @@ import com.aincvy.finger.inf.IFingerObject;
 /**
  * Finger 控制总线 <p>
  * @author World
- * @version alpha 0.0.7
+ * @version alpha 0.0.8
  * @since JDK 1.7
  */
 public final class FingerBus {
@@ -176,7 +176,7 @@ public final class FingerBus {
 	}
 	
 	/**
-	 * 
+	 * 获取一个新的数据库链接
 	 * @return
 	 */
 	public static Connection newConnection(){
